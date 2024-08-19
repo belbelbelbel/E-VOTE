@@ -2,7 +2,6 @@ import "../Styles/Entire.css"
 import { IoPerson } from "react-icons/io5";
 import { FaLock } from "react-icons/fa";
 import { MdOutlineHowToVote } from "react-icons/md"
-import { useNavigate } from 'react-router';
 export const Signin = () => {
   return (
     <div className='text-black w-screen py-[1rem] xl:py-0 h-screen  xl:flex-row flex-col flex'>
