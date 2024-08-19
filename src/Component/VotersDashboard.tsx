@@ -1,5 +1,7 @@
 export const VotersDashboard = () => {
   return (
-    <div>VotersDashboard</div>
+    <div>
+        wefwead
+    </div>
   )
 }
