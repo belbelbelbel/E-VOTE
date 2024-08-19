@@ -1,11 +1,9 @@
-import React from 'react'
 import "../Styles/Entire.css"
 import { IoPerson } from "react-icons/io5";
 import { FaLock } from "react-icons/fa";
 import { MdOutlineHowToVote } from "react-icons/md"
 import { useNavigate } from 'react-router';
 export const Signin = () => {
-  const navigate = useNavigate()
   return (
     <div className='text-black w-screen py-[1rem] xl:py-0 h-screen  xl:flex-row flex-col flex'>
       <div className=' h-screen hidden xl:flex pt-[3.6rem] gap-[0vw] w-[49%] items-center gap-[4.6vw]  flex-col flex signup-background'>
