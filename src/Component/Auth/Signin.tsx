@@ -14,7 +14,7 @@ export const Signin = () => {
       <div className='xl:w-[51%] w-screen  h-[100dvh] mx-auto  xl:pt-[5rem] flex flex-col items-center justify-center'>
         <div className='flex  flex-col   xl:w-[60%] w-[83%]  h-full justify-center xl:justify-start xl:gap-[11.4vw]   mx-auto'>
           <div className='items-center flex justify-center'>
-            <img loading='lazy' src="/asset/Images/weblogo.png" alt="weblogo" className='xl:w-[14vw] w-[50vw] w-[44vw] absolute top-[15vw] md:top-[10vw] xl:top-0 xl:relative' />
+            <img loading='lazy' src="/asset/Images/weblogo.png" alt="weblogo" className='xl:w-[14vw] w-[50vw] w-[44vw] relative top-[15vw] md:top-[10vw] xl:top-0 xl:relative' />
           </div>
           <form className='flex flex-col gap-[2vw] xl:gap-[1.1vw]'>
             <div className=''>
