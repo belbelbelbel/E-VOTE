@@ -1,0 +1,19 @@
+.signup-background {
+    background-image: url("../Styles/BackgroundImage/signupbackground.png");
+    background-repeat: no-repeat;
+    background-size: cover !important;
+    font-family: myFont;
+}
+
+@font-face {
+    font-family: myFont;
+    src: url("../Styles/Satoshi_Complete/Fonts/OTF/Satoshi-Bold.otf");
+}
+input::placeholder {
+    color:  #BDBDBD !important;
+    opacity: 1; /* Firefox */
+  }
+
+.fonts-text {
+    font-family: myFont;
+}
