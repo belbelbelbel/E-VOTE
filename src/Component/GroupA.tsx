@@ -35,7 +35,7 @@ export const GroupA = () => {
             setShowModal(true);
         }
     }, []);
-
+    console.log(voted)
     const handleVote = (id: number) => {
         setVoted(id);
     };
@@ -65,7 +65,7 @@ export const GroupA = () => {
                             <img src={img.src} alt={img.alt} className='xl:w-[21vw] w-[30vw] h-[25vw] rounded-[3vw] xl:h-[17vw] xl:rounded-[0.8vw]' />
                         </div>
                         <div className='flex flex-col items-center justify-center xl:gap-2'>
-                            <div className='text-center fonts-mid md:text-[3.5vw] s font-medium'>{img.name}</div>
+                            <div className='text-center fonts-mid md:text-[3.5vw] xl:text-[1.3vw] font-medium'>{img.name}</div>
                             <button
                                 className={`text-white  xl:w-[60%] w-[30vw] mx-auto xl:h-[3vw] md:h-[7vw] h-[10vw] fonts-mid rounded-[4px] mt-3 ${voted === img.id ? "bg-[#209254]" : "bg-[#828282]"}`}
                                 onClick={() => handleVote(img.id)}

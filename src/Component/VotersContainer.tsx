@@ -1,6 +1,5 @@
 import { SideBar } from './SideBar'
 import { Outlet, useLocation } from 'react-router'
-import { SideBarSmall } from './SideBarSmall'
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
@@ -60,7 +59,7 @@ export const VotersContainer = () => {
                         <div><img src="/asset/Images/weblogo.png" alt="mOA" className='xl:w-[14vw] w-[46vw] w-[44vw] relative md:-top-[15vw] xl:top-0 xl:relative' /></div>
                         <div className='text-[#9C9C9C] xl:text-[43px] text-[7vw] fonts-small font-black flex gap-2'>
                             <span className='text-[#0250FC] fonts-mid'>Welcome,</span>
-                            <span>Mr Joshua!</span>
+                            <span>{username}</span>
                         </div>
                     </div>
                     <div className='w-[85%] pt-[2rem] mx-auto justify-center flex flex-col gap-4'>

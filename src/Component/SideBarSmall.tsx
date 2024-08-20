@@ -1,5 +1,3 @@
-import React from 'react'
-
 export const SideBarSmall = () => {
   return (
     <div>

@@ -60,7 +60,7 @@ export const SideBar = () => {
                         </button>
                     </Link>
                 </div>
-                <div className='bg-[#F94040] rounded-[6px] text-white cursor-pointer h-[3vw] text-[1.1vw] items-center justify-center flex w-[54%] mx-auto'>
+                <div className='bg-[#F94040] rounded-[6px] relative top-[15rem] text-white cursor-pointer h-[3vw] text-[1.1vw] items-center justify-center flex w-[54%] mx-auto'>
                     <button onClick={handleLogout}>Log out</button>
                 </div>
             </div>
