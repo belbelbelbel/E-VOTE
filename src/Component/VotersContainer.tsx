@@ -5,12 +5,11 @@ import { useEffect, useState } from 'react';
 
 const useIsMobile = () => {
     const [isMobile, setIsMobile] = useState(window.innerWidth < 1280);
-
     useEffect(() => {
         const handleResize = () => {
             setIsMobile(window.innerWidth < 1280);
         };
-        
+
         window.addEventListener('resize', handleResize);
         return () => window.removeEventListener('resize', handleResize);
     }, []);
@@ -22,7 +21,14 @@ export const VotersContainer = () => {
     const [showOutlet, setShowOutlet] = useState(false);
     const location = useLocation();
     const isMobile = useIsMobile();
-
+    
+    const handleLogout = () => {
+        localStorage.removeItem("username");
+        localStorage.removeItem("GroupAId");
+        localStorage.removeItem("GroupBId");
+        localStorage.removeItem("GroupCId");
+        window.location.href = "/";
+    }
     useEffect(() => {
         if (location.pathname !== "/votes") {
             setShowOutlet(true);
@@ -34,7 +40,7 @@ export const VotersContainer = () => {
     const capitalizeFirstLetter = (string: any) => {
         return string.charAt(0).toUpperCase() + string.slice(1);
     };
-    
+
     var name = localStorage.getItem('username');
     const username = capitalizeFirstLetter(name);
 
@@ -75,6 +81,9 @@ export const VotersContainer = () => {
                                 <button><Link to="GroupC">GROUP C</Link></button>
                             </div>
                         </div>
+                    </div>
+                    <div className='bg-[#F94040] cursor-pointer rounded-[6px] top-[15rem] text-white cursor-pointer h-[11vw] text-[4.1vw] items-center justify-center flex w-[61%] mx-auto'>
+                        <button onClick={handleLogout}>Log out</button>
                     </div>
                 </div>
 

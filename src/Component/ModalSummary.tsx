@@ -5,7 +5,6 @@ export const ModalSummary = () => {
         localStorage.removeItem("GroupBId");
         localStorage.removeItem("GroupCId");
         window.location.href = "/";
-
     }
     console.log()
     return (
