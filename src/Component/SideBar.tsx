@@ -10,7 +10,11 @@ export const SideBar = () => {
     
     const handleLogout = () => {
         localStorage.removeItem("username");
+        localStorage.removeItem("GroupAId");
+        localStorage.removeItem("GroupBId");
+        localStorage.removeItem("GroupCId");
         window.location.href = "/";
+
     }
     return (
         <div>

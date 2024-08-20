@@ -6,6 +6,7 @@ import { GroupA } from './Component/GroupA'
 import { GroupB } from './Component/GroupB'
 import { GroupC } from './Component/GroupC'
 import { Greeting } from './Component/Greeting'
+import { GroupsmallA } from './Component/GroupsmallA'
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
         <Route path='GroupB' element={<GroupB />} />
         <Route path='GroupC' element={<GroupC />} />
       </Route>
+      <Route path="/GroupA" element={<GroupsmallA />} />
 
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>

@@ -9,7 +9,7 @@ export const Greeting = () => {
     const username = capitalizeFirstLetter(name);
 
     return (
-        <div className='h-full w-full flex justify-center'>
+        <div className='h-full w-full flex xl:flex hidden  justify-center'>
             <div className='flex pt-[5rem] flex-col gap-[4vw] items-center cursor-pointer'>
                 <div className='text-[#9C9C9C] text-[43px] fonts-small font-black flex gap-2'>
                     <span className='text-[#0250FC] fonts-mid'>Welcome,</span>

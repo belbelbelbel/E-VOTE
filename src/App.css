@@ -1,4 +1,4 @@
-.voting-container {
+/* .voting-container {
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -10,6 +10,8 @@
   flex-direction: column;
   gap: 1rem;
 }
+
+
 
 .images {
   display: flex;
@@ -41,4 +43,4 @@ img {
 .vote-button.active {
   background-color: #0250FC;
   color: white;
-}
+} */
