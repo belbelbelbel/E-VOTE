@@ -22,7 +22,7 @@ export const Signin = () => {
       return;
     }
     else {
-      navigate("/voters");
+      navigate("/votes",{state:{username: formState.username}});
     }
   }
   const [] = useState()
@@ -30,6 +30,8 @@ export const Signin = () => {
     const { name, value } = e.target;
     setFormState({ ...formState, [name]: value });
   };
+
+  localStorage.setItem('username',formState.username)
 
   return (
     <div className="text-black w-screen py-[1rem] xl:py-0 h-screen xl:flex-row flex-col flex">

@@ -5,15 +5,41 @@
     font-family: myFont;
 }
 
+.sidebarbackground {
+    background-image: url("../Styles/BackgroundImage/votebackground.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}
+
+@font-face {
+    font-family: myFontmid;
+    src: url("../Styles/Satoshi_Complete/Fonts/OTF/Satoshi-Medium.otf");
+}
+
 @font-face {
     font-family: myFont;
     src: url("../Styles/Satoshi_Complete/Fonts/OTF/Satoshi-Bold.otf");
 }
+@font-face {
+    font-family: myFontsmall;
+    src: url("../Styles/Satoshi_Complete/Fonts/OTF/Satoshi-Light.otf");
+}
 input::placeholder {
     color:  #BDBDBD !important;
-    opacity: 1; /* Firefox */
+    opacity: 1;
   }
 
 .fonts-text {
     font-family: myFont;
+}
+
+.fonts-small {
+    font-family: myFontsmall;
+}
+.isActive {
+    transition: 0.6s ease-in-out;
+}
+.fonts-mid {
+    font-family: myFontmid;
 }

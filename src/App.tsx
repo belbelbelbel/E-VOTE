@@ -1,15 +1,25 @@
 import './App.css'
 import { Route, Routes, Navigate } from 'react-router-dom'
 import { Signin } from './Component/Auth/Signin'
-import { VotersDashboard } from './Component/VotersDashboard'
+import { VotersContainer } from './Component/VotersContainer'
+import { GroupA } from './Component/GroupA'
+import { GroupB } from './Component/GroupB'
+import { GroupC } from './Component/GroupC'
+import { Greeting } from './Component/Greeting'
 
 function App() {
 
   return (
     <Routes>
-        <Route path="/" element={<Signin />} />
-        <Route path="/voters" element={<VotersDashboard />} />
-        <Route path="*" element={<Navigate to="/" />} />
+      <Route path="/" element={<Signin />} />
+      <Route path="/votes" element={<VotersContainer />}>
+        <Route index element={<Greeting />} />
+        <Route path='GroupA' element={<GroupA />} />
+        <Route path='GroupB' element={<GroupB />} />
+        <Route path='GroupC' element={<GroupC />} />
+      </Route>
+
+      <Route path="*" element={<Navigate to="/" />} />
     </Routes>
   )
 }
