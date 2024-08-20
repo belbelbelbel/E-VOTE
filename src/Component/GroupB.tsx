@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { ModalSummary } from './ModalSummary';
 
 export const GroupB = () => {
@@ -62,7 +62,7 @@ export const GroupB = () => {
             {showModal && (
                 <div className='h-full w-full inset-0 bg-black opacity-60 absolute flex items-center justify-center'>
                     {/* Modal content goes here */}
-                    <ModalSummary onClose={() => setShowModal(false)} />
+                    <ModalSummary  />
                 </div>
             )}
         </div>

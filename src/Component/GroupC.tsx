@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { ModalSummary } from './ModalSummary';
 
 export const GroupC = () => {
-    const [voted, setVoted] = useState<number | null>(null); // To store the ID of the voted image
+    const [voted, setVoted] = useState<number | null>(null);
     const [showModal, setShowModal] = useState(false);
 
     const imgArray = [
@@ -62,7 +62,7 @@ export const GroupC = () => {
             {showModal && (
                 <div className='h-full w-full inset-0 bg-black opacity-60 absolute flex items-center justify-center'>
                     {/* Modal content goes here */}
-                    <ModalSummary onClose={() => setShowModal(false)} />
+                    <ModalSummary/>
                 </div>
             )}
         </div>

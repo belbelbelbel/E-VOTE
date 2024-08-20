@@ -1,5 +1,4 @@
-import React from 'react';
-import "../Component/Styles/Entire.css";
+import "../Component/Styles/Entire.css"; 
 import { Link, useLocation } from 'react-router-dom';
 
 export const SideBar = () => {
@@ -16,14 +15,15 @@ export const SideBar = () => {
     return (
         <div>
             <div className='flex flex-col gap-[3vw] pt-[3vw]'>
-                <div className="items-center flex justify-center">
+                <Link to='/votes' className="items-center flex justify-center">
                     <img
                         loading="lazy"
                         src="/asset/Images/weblogo.png"
                         alt="weblogo"
                         className="xl:w-[12vw] w-[50vw] w-[44vw] relative -top-[37vw] md:-top-[15vw] xl:top-0 xl:relative"
+
                     />
-                </div>
+                </Link>
                 <div className='flex flex-col gap-[2vw] items-center fonts-small text-white justify-center text-center'>
                     <Link
                         to="GroupA"

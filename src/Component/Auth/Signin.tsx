@@ -3,13 +3,12 @@ import { IoPerson } from "react-icons/io5";
 import { FaLock } from "react-icons/fa";
 import { IoIosEye, IoIosEyeOff } from "react-icons/io";
 import { MdOutlineHowToVote } from "react-icons/md";
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { useNavigate } from "react-router";
 
 export const Signin = () => {
   const navigate = useNavigate()
   const [showPassword, setShowPassword] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
   const [formState, setFormState] = useState({
     username: "",
     password: "",
@@ -18,8 +17,7 @@ export const Signin = () => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (formState.username === "" || formState.password === "") {
-      setErrorMessage("Please fill out all fields");
-      return;
+      return 0;
     }
     else {
       navigate("/votes",{state:{username: formState.username}});
@@ -48,7 +46,7 @@ export const Signin = () => {
           />
         </div>
       </div>
-      <div className="xl:w-[51%] w-screen h-[100dvh] mx-auto xl:pt-[5rem] flex flex-col items-center justify-center">
+      <div className="xl:w-[51%] w-screen h-[95dvh] mx-auto xl:pt-[5rem] flex flex-col items-center justify-center">
         <div className="flex flex-col xl:w-[60%] w-[83%] h-full justify-center xl:justify-start xl:gap-[11.4vw] mx-auto">
           <div className="items-center flex justify-center">
             <img
@@ -86,15 +84,16 @@ export const Signin = () => {
               <div className="flex items-center xl:gap-[10px] md:gap-[18px] gap-[10px] bg-[#F2F2F2] justify-between rounded-[8px] md:px-8 xl:px-4 px-4 xl:py-[0.9vw] md:h-[12.3vw] xl:text-[1.1vw] md:rounded-[6px] md:text-[4vw] h-[3.4rem] xl:h-[3.4rem] w-full">
                 <FaLock className="text-[#BDBDBD] xl:text-[1.2vw] md:text-[4vw] text-[5.4vw]" />
                 <input
-                  type={showPassword ? "text" : "password"}
+                  type="text"
                   name="password"
+                  inputMode="numeric"
                   value={formState.password}
                   onChange={handleChange}
                   required
                   placeholder="Pin"
                   className="bg-transparent w-[90%] outline-none border-none"
                 />
-                <div onClick={() => setShowPassword(!showPassword)} aria-label="Toggle password visibility">
+                <div onClick={() => setShowPassword(!showPassword)} aria-label="Toggle password visibility ">
                   {showPassword ? (
                     <IoIosEye className="text-black text-opacity-50  xl:text-[1.9vw] md:text-[6vw]  text-[7vw]" />
                   ) : (
@@ -105,7 +104,7 @@ export const Signin = () => {
               <div>
                 <button
                   type="submit"
-                  className={`bg-[#0250FC] md:text-[3.5vw] rounded-[8px] xl:text-[1.1vw] text-white uppercase relative top-8 xl:top-0 rounded-[3px] md:rounded-[6px] tracking-[1px] font-medium h-[3.3rem] md:h-[11.3vw] xl:h-[3.4rem] w-full xl:py-[0.9vw] ${!isFormFilled && "bg-[#0250FC] bg-opacity-70 "
+                  className={`bg-[#0250FC] md:text-[3.5vw] rounded-[8px] xl:text-[1.1vw] text-white uppercase relative top-8 xl:top-0 rounded-[3px] md:rounded-[6px] tracking-[1px] font-medium h-[3.3rem] md:h-[11.3vw] xl:h-[3.4rem] w-full xl:py-[0.9vw] ${!isFormFilled && "bg-[#0250FC] bg-opacity-70"
                     }`}
                   disabled={!isFormFilled}
                 >

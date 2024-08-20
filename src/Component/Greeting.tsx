@@ -1,14 +1,12 @@
-import React from 'react';
 import { ImArrowLeft2 } from "react-icons/im";
-import { Link, useLocation } from 'react-router-dom';
+import { Link} from 'react-router-dom';
 
 export const Greeting = () => {
-    const location = useLocation();
-    const capitalizeFirstLetter = (string:string) => {
+    const capitalizeFirstLetter = (string:any) => {
         return string.charAt(0).toUpperCase() + string.slice(1);
     };
-
-    const username = location?.state?.username ? capitalizeFirstLetter(location.state.username) : '';
+    var name =  localStorage.getItem('username')
+    const username = capitalizeFirstLetter(name);
 
     return (
         <div className='h-full w-full flex justify-center'>
@@ -20,7 +18,7 @@ export const Greeting = () => {
                 <Link to="GroupA" className='fonts-mid leading-[4vw] text-center w-[45%] mx-auto text-[45px] text-[#171717] font-light'>
                     Click on the categories by your left to cast your vote
                 </Link>
-                <Link to="GroupA"><ImArrowLeft2 className='text-[4vw]' /></Link>
+                <Link to="GroupA"><ImArrowLeft2 className='text-[4vw] cursor-pointer' /></Link>
             </div>
         </div>
     );
