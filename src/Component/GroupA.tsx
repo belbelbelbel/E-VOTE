@@ -48,7 +48,7 @@ export const GroupA = () => {
     };
 
     return (
-        <div className='xl:h-full   w-full relative  flex flex-col xl:gap-[4.6rem]   gap-[5vw]  xl:items-center xl:justify-evenly group_cont'>
+        <div className='xl:h-full z-50  w-full relative  flex flex-col xl:gap-[4.6rem]   gap-[5vw]  xl:items-center xl:justify-evenly group_cont'>
             <div className='xl:pt-[5.5vw] flex flex-col xl:items-center xl:gap-[4.8rem] gap-[2rem] md:gap-[3rem]'>
                 <div className='flex xl:hidden z-50 text-white justify-between min-h-[25vw] md:min-h-[20vw] w-full items-center flex bg-[#0250FC]'>
                     <div className='w-[80%]  mx-auto flex  justify-between h-[15%]  items-center flex'>
@@ -92,8 +92,8 @@ export const GroupA = () => {
                     <ModalSummary />
                 </div>
             )}
-            <div className='flex items-center justify-center'>
-                <div className="h-[1vw] mx-[1.5vw] xl:hidden block w-[40%]  relative  -top-2 mx-auto rounded-[4px] bg-black">
+            <div className='flex items-center relative justify-center'>
+                <div className="h-[1vw]  mx-[1.5vw] xl:hidden block w-[40%]  absolute -top-2 md:-top-10 mx-auto rounded-[4px] bg-black">
                 </div>
             </div>
         </div>

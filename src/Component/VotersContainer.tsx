@@ -45,7 +45,7 @@ export const VotersContainer = () => {
     const username = capitalizeFirstLetter(name);
 
     return (
-        <div className='w-screen h-[100dvh]'>
+        <div className='w-screen relative z-40 h-[100dvh]'>
             {/* Desktop Layout */}
             <div className='w-screen h-screen flex xl:flex  hidden '>
                 <div className='w-screen h-screen xl:flex hidden flex'>
@@ -60,7 +60,7 @@ export const VotersContainer = () => {
 
             {/* Mobile Layout */}
             <div className='h-full w-full xl:hidden'>
-                <div className='flex md:pt-[5rem] pt-[3rem] md:gap-[4rem] gap-[2rem] flex-col'>
+                <div className='flex md:pt-[4.5rem] pt-[3rem] md:gap-[4rem] gap-[2rem] flex-col'>
                     <div className='flex items-center h-full justify-center md:gap-[10vw] gap-[15vw] flex-col'>
                         <div><img src="/asset/Images/weblogo.png" alt="mOA" className='xl:w-[14vw] w-[46vw] w-[44vw] relative md:-toxp-[15vw] xl:top-0 xl:relative' /></div>
                         <div className='text-[#9C9C9C] xl:text-[43px] text-[7vw] fonts-small font-black flex gap-2'>
@@ -88,8 +88,12 @@ export const VotersContainer = () => {
                 </div>
 
                 {/* Conditionally render Outlet on mobile */}
-                <div className={`absolute w-full inset-0 bg-white h-full ${showOutlet ? 'slide-in' : 'hidden'}`}>
+                <div className={`absolute w-full z-50 inset-0 bg-white h-full ${showOutlet ? 'slide-in' : 'hidden'}`}>
                     {!isMobile || location.pathname !== "/votes" ? <Outlet /> : null}
+                </div>
+            </div>
+            <div className='flex items-center justify-center'>
+                <div className="h-[1vw] mx-[1.5vw] xl:hidden block w-[40%] z-10  relative  -top-2 md:-top-4 mx-auto rounded-[4px] bg-black">
                 </div>
             </div>
         </div>

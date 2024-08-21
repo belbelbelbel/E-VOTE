@@ -93,8 +93,8 @@ export const GroupC = () => {
                 </div>
             )}
             <div className='flex items-center justify-center'>
-                <div className="h-[1vw] mx-[1.5vw] xl:hidden block w-[40%]  relative  -top-2 mx-auto rounded-[4px] bg-black">
-                </div>
+                {/* <div className="h-[1vw] mx-[1.5vw] xl:hidden block w-[40%]  relative  -top-2 mx-auto rounded-[4px] bg-black">
+                </div> */}
             </div>
         </div>
     );

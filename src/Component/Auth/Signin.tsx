@@ -115,7 +115,7 @@ export const Signin = () => {
           </form>
         </div>
       </div>
-      <div className="h-[1vw] xl:hidden block w-[40%] mx-auto rounded-[4px] bg-black">
+      <div className="h-[1vw] xl:hidden block w-[40%] mx-auto relative top-3 rounded-[4px] bg-black">
         <div></div>
       </div>
     </div>
