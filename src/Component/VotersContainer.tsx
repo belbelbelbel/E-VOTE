@@ -21,7 +21,7 @@ export const VotersContainer = () => {
     const [showOutlet, setShowOutlet] = useState(false);
     const location = useLocation();
     const isMobile = useIsMobile();
-    
+
     const handleLogout = () => {
         localStorage.removeItem("username");
         localStorage.removeItem("GroupAId");
@@ -60,30 +60,30 @@ export const VotersContainer = () => {
 
             {/* Mobile Layout */}
             <div className='h-full w-full xl:hidden'>
-                <div className='flex pt-[3rem] gap-[3rem] flex-col'>
-                    <div className='flex items-center gap-[15vw] flex-col'>
-                        <div><img src="/asset/Images/weblogo.png" alt="mOA" className='xl:w-[14vw] w-[46vw] w-[44vw] relative md:-top-[15vw] xl:top-0 xl:relative' /></div>
+                <div className='flex md:pt-[5rem] pt-[3rem] md:gap-[4rem] gap-[2rem] flex-col'>
+                    <div className='flex items-center h-full justify-center md:gap-[10vw] gap-[15vw] flex-col'>
+                        <div><img src="/asset/Images/weblogo.png" alt="mOA" className='xl:w-[14vw] w-[46vw] w-[44vw] relative md:-toxp-[15vw] xl:top-0 xl:relative' /></div>
                         <div className='text-[#9C9C9C] xl:text-[43px] text-[7vw] fonts-small font-black flex gap-2'>
                             <span className='text-[#0250FC] fonts-mid'>Welcome,</span>
                             <span>{username}</span>
                         </div>
                     </div>
-                    <div className='w-[85%] pt-[2rem] mx-auto justify-center flex flex-col gap-4'>
-                        <div className='fonts-mid'>Select a category to vote</div>
+                    <div className='w-[85%] pt-[1rem] mx-auto   flex flex-col gap-2'>
+                        <div className='fonts-mid text-[4.3vw]'>Select a category to vote</div>
                         <div className='flex flex-col gap-5'>
-                            <div className='bg-[#0250FC] rounded-[10px] fonts-small font-extrabold flex items-center text-white text-[4.7vw] tracking-[4px] justify-center w-[100%] mx-auto h-[8vh]'>
-                                <button><Link to="GroupA">GROUP A</Link></button>
-                            </div>
-                            <div className='bg-[#0250FC] fonts-small font-extrabold rounded-[10px] flex items-center text-white text-[4.7vw] tracking-[4px] justify-center w-[100%] mx-auto h-[8vh]'>
-                                <button><Link to="GroupB">GROUP B</Link></button>
-                            </div>
-                            <div className='bg-[#0250FC] rounded-[10px] fonts-small font-extrabold flex items-center text-white text-[4.7vw] tracking-[4px] justify-center w-[100%] mx-auto h-[8vh]'>
-                                <button><Link to="GroupC">GROUP C</Link></button>
-                            </div>
+                            <Link to="GroupA" className='bg-[#0250FC] group_button rounded-[10px] fonts-small font-extrabold flex items-center text-white text-[4.7vw] tracking-[4px] justify-center w-[100%] mx-auto md:h-[10vh] h-[8vh]'>
+                                <button>GROUP A</button>
+                            </Link>
+                            <Link to="GroupB" className='bg-[#0250FC] group_button fonts-small font-extrabold rounded-[10px] flex items-center text-white text-[4.7vw] tracking-[4px] justify-center w-[100%] md:h-[10vh] mx-auto h-[8vh]'>
+                                <button>GROUP B</button>
+                            </Link>
+                            <Link to="GroupC" className='bg-[#0250FC] group_button rounded-[10px] fonts-small font-extrabold flex items-center text-white text-[4.7vw] tracking-[4px] justify-center w-[100%] md:h-[10vh] mx-auto h-[8vh]'>
+                                <button>GROUP C</button>
+                            </Link>
                         </div>
                     </div>
-                    <div className='bg-[#F94040] cursor-pointer rounded-[6px] top-[15rem] text-white cursor-pointer h-[11vw] text-[4.1vw] items-center justify-center flex w-[61%] mx-auto'>
-                        <button onClick={handleLogout}>Log out</button>
+                    <div className='bg-[#F94040] cursor-pointer rounded-[6px] group_button relative -top-[1rem] text-white cursor-pointer md:h-[8vh] h-[6vh] text-[4.1vw] items-center justify-center flex w-[61%] mx-auto'>
+                        <button onClick={handleLogout}>Log Out</button>
                     </div>
                 </div>
 

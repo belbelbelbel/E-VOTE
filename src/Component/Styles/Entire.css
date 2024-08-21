@@ -43,3 +43,15 @@ input::placeholder {
 .fonts-mid {
     font-family: myFontmid;
 }
+
+@media screen and (max-width: 767px) {
+    .group_cont{
+        height: 100%;
+    }
+}
+
+@media (min-width: 540px) and (max-width:640px){
+    .group_button {
+        height: 12vw !important;
+    }
+}

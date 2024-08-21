@@ -13,7 +13,7 @@ export const ModalSummary = () => {
                 <div><img src="/asset/Images/modalsuccessimage.png" alt="suceesIMAGE"  className=""/></div>
                 <div className="text-center fonts-mid">
                     <div>Vote successfully saved!</div>
-                    <div>Please move to the next category or <span className="cursor-pointer text-red-500" onClick={handleLogout}>Log out</span>.</div>
+                    <div>Please move to the next category </div>
                 </div>
             </div>
 
