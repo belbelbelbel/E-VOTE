@@ -1,11 +1,4 @@
 export const ModalSummary = () => {
-    const handleLogout = () => {
-        localStorage.removeItem("username");
-        localStorage.removeItem("GroupAId");
-        localStorage.removeItem("GroupBId");
-        localStorage.removeItem("GroupCId");
-        window.location.href = "/";
-    }
     console.log()
     return (
         <div className='w-screen  text-white flex justify-center items-center ' >
