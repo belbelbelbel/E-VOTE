@@ -6,21 +6,45 @@ import { MdOutlineHowToVote } from "react-icons/md";
 import { ChangeEvent, useState } from "react";
 import { useNavigate } from "react-router";
 
+
 export const Signin = () => {
+  const [isloading, setIsloading] = useState(false)
   const navigate = useNavigate()
   const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState("")
   const [formState, setFormState] = useState({
     username: "",
     password: "",
   });
   const isFormFilled = formState.username !== "" && formState.password !== "";
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (formState.username === "" || formState.password === "") {
-      return 0;
+    setIsloading(true)
+    try {
+      const res = await fetch("https://foursquarevgc-election-api.onrender.com/users/login", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          username: formState.username,
+          access_pin: formState.password,
+        }),
+      })
+      const result = await res.json();
+      console.log(result)
+      setError(result.username || result.access_pin)
+      if (!res.ok) {
+        throw new Error("Failed to fetch");
+      }
+      else {
+        navigate("/votes")
+      }
+    } catch (error) {
+      console.log("error")
     }
-    else {
-      navigate("/votes",{state:{username: formState.username}});
+    finally {
+      setIsloading(false)
     }
   }
   const [] = useState()
@@ -29,7 +53,7 @@ export const Signin = () => {
     setFormState({ ...formState, [name]: value });
   };
 
-  localStorage.setItem('username',formState.username)
+  localStorage.setItem('username', formState.username)
 
   return (
     <div className="text-black w-screen py-[1rem] xl:py-0 h-screen xl:flex-row flex-col flex">
@@ -69,7 +93,7 @@ export const Signin = () => {
               </div>
             </div>
             <div className="flex flex-col gap-[4.8vw] md:gap-[6vw] xl:gap-[1.5vw]">
-              <div className="flex items-center md:gap-[18px] gap-[10px] xl:gap-[10px] bg-[#F2F2F2] rounded-[8px] md:px-8 xl:px-4 px-4 xl:py-[0.9vw] h-[3.4rem] md:h-[12.3vw] md:rounded-[6px] xl:text-[1.1vw] md:text-[4vw] xl:h-[3.4rem] w-full">
+              <div className="flex items-center md:gap-[18px] gap-[10px] xl:gap-[10px] bg-[#F2F2F2] rounded-[6px] md:px-8 xl:px-4 px-4 xl:py-[0.9vw] h-[3.4rem] md:h-[12.3vw] md:rounded-[10px] xl:text-[1.1vw] md:text-[4vw] xl:h-[3.4rem] w-full">
                 <IoPerson className="text-[#BDBDBD] xl:text-[1.5vw] md:text-[5vw] text-[6vw]" />
                 <input
                   type="text"
@@ -81,10 +105,11 @@ export const Signin = () => {
                   className="bg-transparent w-[90%] outline-none border-none"
                 />
               </div>
-              <div className="flex items-center xl:gap-[10px] md:gap-[18px] gap-[10px] bg-[#F2F2F2] justify-between rounded-[8px] md:px-8 xl:px-4 px-4 xl:py-[0.9vw] md:h-[12.3vw] xl:text-[1.1vw] md:rounded-[6px] md:text-[4vw] h-[3.4rem] xl:h-[3.4rem] w-full">
+
+              <div className="flex items-center xl:gap-[10px] md:gap-[18px] gap-[10px] bg-[#F2F2F2] justify-between  rounded-[6px] md:px-8 xl:px-4 px-4 xl:py-[0.9vw] md:h-[12.3vw] xl:text-[1.1vw] md:rounded-[10px] md:text-[4vw] h-[3.4rem] xl:h-[3.4rem] w-full">
                 <FaLock className="text-[#BDBDBD] xl:text-[1.2vw] md:text-[4vw] text-[5.4vw]" />
                 <input
-                  type="text"
+                  type={!showPassword ? "password" : "text"}
                   name="password"
                   inputMode="numeric"
                   value={formState.password}
@@ -101,14 +126,25 @@ export const Signin = () => {
                   )}
                 </div>
               </div>
+              {
+                !isloading && (
+                  <div className="relative flex fonts-mid items-center justify-center">
+                    <div className="text-[#FF0000] top-0 xl:-top-3  absolute xl:text-[1.3vw]  text-center w-[60%] mx-auto xl:text-[1.1vw] md:text-[3.5vw]">
+                      {error}
+                    </div>
+                  </div>
+                )
+              }
               <div>
                 <button
                   type="submit"
                   className={`bg-[#0250FC] md:text-[3.5vw] rounded-[8px] xl:text-[1.1vw] text-white uppercase relative top-8 xl:top-0 rounded-[3px] md:rounded-[6px] tracking-[1px] font-medium h-[3.3rem] md:h-[11.3vw] xl:h-[3.4rem] w-full xl:py-[0.9vw] ${!isFormFilled && "bg-[#0250FC] bg-opacity-70"
                     }`}
-                  disabled={!isFormFilled}
+                  disabled={!isFormFilled && isloading}
                 >
-                  Login
+                  {
+                    !isloading ? "Login" : " Please wait... "
+                  }
                 </button>
               </div>
             </div>
