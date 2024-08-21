@@ -18,6 +18,8 @@ const useIsMobile = () => {
 };
 
 export const VotersContainer = () => {
+    const token = localStorage.getItem('token');
+    console.log(token);
     const [showOutlet, setShowOutlet] = useState(false);
     const location = useLocation();
     const isMobile = useIsMobile();
@@ -29,6 +31,26 @@ export const VotersContainer = () => {
         localStorage.removeItem("GroupCId");
         window.location.href = "/";
     }
+
+   useEffect(() => {
+    const handleEletion = async (id:any) => {
+        try {
+            const res = await fetch(`https://foursquarevgc-election-api.onrender.com/elections/${id}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            const result = await res.json();
+            console.log(result)
+        } catch (error) {
+            console.log(error)
+        }
+    }   
+    handleEletion(token);
+   }, [token])
+   
+
     useEffect(() => {
         if (location.pathname !== "/votes") {
             setShowOutlet(true);

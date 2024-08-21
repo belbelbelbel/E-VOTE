@@ -35,6 +35,7 @@ export const GroupA = () => {
             setShowModal(true);
         }
     }, []);
+
     console.log(voted)
     const handleVote = (id: number) => {
         setVoted(id);
@@ -45,6 +46,7 @@ export const GroupA = () => {
             localStorage.setItem('GroupAId', voted.toString());
             setShowModal(true);
         }
+        console.log(voted)
     };
 
     return (

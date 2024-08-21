@@ -33,6 +33,8 @@ export const Signin = () => {
       })
       const result = await res.json();
       console.log(result)
+      console.log(result.token)
+      localStorage.setItem("token", result.token)
       setError(result.username || result.access_pin)
       if (!res.ok) {
         throw new Error("Failed to fetch");
