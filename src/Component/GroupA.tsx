@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { ModalSummary } from "./ModalSummary";
 import { HiOutlineArrowLeft } from "react-icons/hi2";
 import { useNavigate } from "react-router";
@@ -16,6 +16,7 @@ export const GroupA = () => {
   const [showModal, setShowModal] = useState(false);
   const [payload, setPayload] = useState({});
   const navigate = useNavigate();
+  console.log(payload);
 
   const newArray = [];
   newArray.push(election);
