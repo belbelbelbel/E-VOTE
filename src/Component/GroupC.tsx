@@ -47,14 +47,17 @@ export const GroupC = () => {
     const electionId = electionData?.[2]?._id;
     const group = electionData?.[2]?.groups[0];
     const groupId = electionData?.[2]?.groups[0]?._id;
+
     const candidates = group?.candidates;
     const candidateId =
-        candidates && candidates.length > 0 ? candidates[0]._id : " ";
+        candidates && candidates.length > 0 ? candidates[2]._id : " ";
     candidates?.forEach((candidate: any) => {
         console.log("Candidate:", candidate);
     });
+    console.log("candidTEID",candidateId)
 
     const callSaveVoteApi = async (updatedPayload: any) => {
+    
         try {
             const res = await fetch(
                 `https://foursquarevgc-election-api.onrender.com/election-records/vote/${electionId}`,
@@ -88,22 +91,26 @@ export const GroupC = () => {
     };
 
     const handleSaveVote = async () => {
-        if (voted !== null) {
-            localStorage.setItem("GroupAId", voted.toString());
-
-            setPayload((prevPayload) => {
-                const updatedPayload = {
-                    ...prevPayload,
-                    groupId: groupId,
-                    candidateId: candidateId,
-                };
-
-                callSaveVoteApi(updatedPayload);
-
-                return updatedPayload;
-            });
-
-            console.log(voted);
+        setIsLoading(true)
+        try {
+            if (voted !== null) {
+                localStorage.setItem("GroupAId", voted.toString());
+                setPayload((prevPayload) => {
+                    const updatedPayload = {
+                        ...prevPayload,
+                        groupId: groupId,
+                        candidateId: candidateId,
+                    };
+                    callSaveVoteApi(updatedPayload);
+                    return updatedPayload;
+                });
+                console.log(voted);
+            }
+        } catch (error) {
+            error
+        }
+        finally {
+            setIsLoading(false);
         }
     };
 
@@ -122,10 +129,10 @@ export const GroupC = () => {
                     </div>
                 </div>
                 <div className="text-[#171717] fonts-mid tracking-[0.2px] xl:block hidden">
-                    Below are the candidates for the “Spiritual Development” category
+                Below are the candidates for the “Spiritual Development” category
                 </div>
                 <div className="xl:hidden my-[0vw] md:my-[0vw] text-[4.5vw] text-center tracking-[1px]">
-                    Below are the candidates for the “Spiritual Development” category
+                Below are the candidates for the “Spiritual Development” category
                 </div>
                 <div className="flex xl:flex-row xl:px-0 px-0 md:px-0 flex-col xl:gap-[3vw] gap-[7vw] xl:items-center justify-center">
                     {!isloading ? (
@@ -158,7 +165,7 @@ export const GroupC = () => {
                             {[...Array(3)].map((_, index) => (
                                 <div key={index} className="flex xl:flex-col items-center gap-[10vw] xl:gap-2">
                                     <div className="skeleton-img xl:w-[21vw] w-[33vw] h-[25vw] rounded-[3vw] xl:h-[21vw] xl:rounded-[0.8vw]"></div>
-                                    <div className="items-center flex-col">
+                                    <div>
                                         <div className="skeleton-text xl:w-[21vw] w-[30vw] h-[1vw] mt-2"></div>
                                         <div className="skeleton-button xl:w-[60%] w-[31vw] h-[8vw] xl:h-[3vw] mt-3"></div>
                                     </div>
@@ -177,7 +184,7 @@ export const GroupC = () => {
                             onClick={handleSaveVote}
                             disabled={voted === null}
                         >
-                            Save Vote
+                            {isloading ? "Saving..." :"Save vote"}
                         </button>
                     )
                 }

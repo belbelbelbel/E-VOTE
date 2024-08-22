@@ -58,8 +58,10 @@ export const GroupA = () => {
     candidates?.forEach((candidate: any) => {
         console.log("Candidate:", candidate);
     });
+    console.log("candidTEID",candidateId)
 
     const callSaveVoteApi = async (updatedPayload: any) => {
+    
         try {
             const res = await fetch(
                 `https://foursquarevgc-election-api.onrender.com/election-records/vote/${electionId}`,
@@ -86,6 +88,7 @@ export const GroupA = () => {
             );
             setShowErrorModal(true);
         }
+      
     };
 
     const handleVote = (candidateId: number) => {
@@ -93,22 +96,30 @@ export const GroupA = () => {
     };
 
     const handleSaveVote = async () => {
-        if (voted !== null) {
-            localStorage.setItem("GroupAId", voted.toString());
+        setIsLoading(true)
+        try {
+            if (voted !== null) {
+                localStorage.setItem("GroupAId", voted.toString());
 
-            setPayload((prevPayload) => {
-                const updatedPayload = {
-                    ...prevPayload,
-                    groupId: groupId,
-                    candidateId: candidateId,
-                };
+                setPayload((prevPayload) => {
+                    const updatedPayload = {
+                        ...prevPayload,
+                        groupId: groupId,
+                        candidateId: candidateId,
+                    };
 
-                callSaveVoteApi(updatedPayload);
+                    callSaveVoteApi(updatedPayload);
 
-                return updatedPayload;
-            });
+                    return updatedPayload;
+                });
 
-            console.log(voted);
+                console.log(voted);
+            }
+        } catch (error) {
+            error
+        }
+        finally {
+            setIsLoading(false);
         }
     };
 
@@ -182,7 +193,7 @@ export const GroupA = () => {
                             onClick={handleSaveVote}
                             disabled={voted === null}
                         >
-                            Save Vote
+                            {isloading ? "Saving..." :"Save vote"}
                         </button>
                     )
                 }

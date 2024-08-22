@@ -50,7 +50,7 @@ export const GroupB = () => {
 
     const candidates = group?.candidates;
     const candidateId =
-        candidates && candidates.length > 0 ? candidates[0]._id : " ";
+        candidates && candidates.length > 0 ? candidates[1]._id : " ";
     candidates?.forEach((candidate: any) => {
         console.log("Candidate:", candidate);
     });
@@ -89,22 +89,26 @@ export const GroupB = () => {
     };
 
     const handleSaveVote = async () => {
-        if (voted !== null) {
-            localStorage.setItem("GroupAId", voted.toString());
-
-            setPayload((prevPayload) => {
-                const updatedPayload = {
-                    ...prevPayload,
-                    groupId: groupId,
-                    candidateId: candidateId,
-                };
-
-                callSaveVoteApi(updatedPayload);
-
-                return updatedPayload;
-            });
-
-            console.log(voted);
+        setIsLoading(true)
+        try {
+            if (voted !== null) {
+                localStorage.setItem("GroupAId", voted.toString());
+                setPayload((prevPayload) => {
+                    const updatedPayload = {
+                        ...prevPayload,
+                        groupId: groupId,
+                        candidateId: candidateId,
+                    };
+                    callSaveVoteApi(updatedPayload);
+                    return updatedPayload;
+                });
+                console.log(voted);
+            }
+        } catch (error) {
+            error
+        }
+        finally {
+            setIsLoading(false);
         }
     };
 
@@ -178,7 +182,7 @@ export const GroupB = () => {
                             onClick={handleSaveVote}
                             disabled={voted === null}
                         >
-                            Save Vote
+                            {isloading ? "Saving..." :"Save vote"}
                         </button>
                     )
                 }
