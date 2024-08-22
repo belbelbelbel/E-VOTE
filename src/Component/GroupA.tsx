@@ -3,7 +3,7 @@ import { ModalSummary } from './ModalSummary';
 import { HiOutlineArrowLeft } from 'react-icons/hi2';
 import { useNavigate } from 'react-router';
 
-export const GroupA = () => {
+export const GroupA = (election: any) => {
     const [voted, setVoted] = useState<number | null>(null);
     const [showModal, setShowModal] = useState(false);
     const navigate = useNavigate()
@@ -28,6 +28,8 @@ export const GroupA = () => {
         },
     ];
 
+    console.log('election on a  rdytdytcdyutdcutydutyy*******************')
+    
     useEffect(() => {
         const storedVote = localStorage.getItem('GroupAId');
         if (storedVote) {
