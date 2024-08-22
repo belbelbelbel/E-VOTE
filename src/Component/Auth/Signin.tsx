@@ -118,7 +118,7 @@ export const Signin = () => {
                   onChange={handleChange}
                   required
                   placeholder="Pin"
-                  className="bg-transparent uppercase w-[90%] outline-none border-none"
+                  className="bg-transparent  w-[90%] outline-none border-none"
                 />
                 <div onClick={() => setShowPassword(!showPassword)} aria-label="Toggle password visibility ">
                   {showPassword ? (
