@@ -3,7 +3,7 @@ import { IoPerson } from "react-icons/io5";
 import { FaLock } from "react-icons/fa";
 import { IoIosEye, IoIosEyeOff } from "react-icons/io";
 import { MdOutlineHowToVote } from "react-icons/md";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 
 
@@ -17,6 +17,11 @@ export const Signin = () => {
     password: "",
   });
   const isFormFilled = formState.username !== "" && formState.password !== "";
+  useEffect(() => {
+    if(!isFormFilled) {
+      setError("")
+    }
+  })
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsloading(true)
@@ -35,7 +40,7 @@ export const Signin = () => {
       console.log(result)
       console.log(result.token)
       localStorage.setItem("token", result.token)
-      setError(result.username || result.access_pin)
+      setError( result.username || result.access_pin)
       if (!res.ok) {
         throw new Error("Failed to fetch");
       }
@@ -118,7 +123,7 @@ export const Signin = () => {
                   onChange={handleChange}
                   required
                   placeholder="Pin"
-                  className="bg-transparent  w-[90%] outline-none border-none"
+                  className="bg-transparent uppercase w-[90%] outline-none border-none"
                 />
                 <div onClick={() => setShowPassword(!showPassword)} aria-label="Toggle password visibility ">
                   {showPassword ? (
