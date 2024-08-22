@@ -32,24 +32,25 @@ export const VotersContainer = () => {
         window.location.href = "/";
     }
 
-   useEffect(() => {
-    const handleEletion = async (id:any) => {
-        try {
-            const res = await fetch(`https://foursquarevgc-election-api.onrender.com/elections/${id}`, {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
-            const result = await res.json();
-            console.log(result)
-        } catch (error) {
-            console.log(error)
+    useEffect(() => {
+        const handleEletion = async (id: any) => {
+            try {
+                const res = await fetch(`https://foursquarevgc-election-api.onrender.com/elections/${id}`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    }
+                })
+                const result = await res.json();
+                console.log(result)
+            } catch (error) {
+                console.log(error)
+            }
         }
-    }   
-    handleEletion(token);
-   }, [token])
-   
+        handleEletion(token);
+    }, [token])
+
 
     useEffect(() => {
         if (location.pathname !== "/votes") {
@@ -93,19 +94,21 @@ export const VotersContainer = () => {
                     <div className='w-[85%] pt-[1rem] mx-auto   flex flex-col gap-2'>
                         <div className='fonts-mid text-[4.3vw]'>Select a category to vote</div>
                         <div className='flex flex-col gap-5'>
-                            <Link to="GroupA" className='bg-[#0250FC] group_button rounded-[10px] fonts-small font-extrabold flex items-center text-white text-[4.7vw] tracking-[4px] justify-center w-[100%] mx-auto md:h-[10vh] h-[8vh]'>
+                            <Link to="GroupA" className='bg-[#0250FC] group_button rounded-[10px] fonts-small font-extrabold flex items-center text-white text-[4.7vw] tracking-[4px] justify-center w-[100%] mx-auto md:h-[9vh] h-[8vh]'>
                                 <button>GROUP A</button>
                             </Link>
-                            <Link to="GroupB" className='bg-[#0250FC] group_button fonts-small font-extrabold rounded-[10px] flex items-center text-white text-[4.7vw] tracking-[4px] justify-center w-[100%] md:h-[10vh] mx-auto h-[8vh]'>
+                            <Link to="GroupB" className='bg-[#0250FC] group_button fonts-small font-extrabold rounded-[10px] flex items-center text-white text-[4.7vw] tracking-[4px] justify-center w-[100%] md:h-[9vh] mx-auto h-[8vh]'>
                                 <button>GROUP B</button>
                             </Link>
-                            <Link to="GroupC" className='bg-[#0250FC] group_button rounded-[10px] fonts-small font-extrabold flex items-center text-white text-[4.7vw] tracking-[4px] justify-center w-[100%] md:h-[10vh] mx-auto h-[8vh]'>
+                            <Link to="GroupC" className='bg-[#0250FC] group_button rounded-[10px] fonts-small font-extrabold flex items-center text-white text-[4.7vw] tracking-[4px] justify-center w-[100%] md:h-[9vh] mx-auto h-[8vh]'>
                                 <button>GROUP C</button>
                             </Link>
                         </div>
                     </div>
-                    <div className='bg-[#F94040] cursor-pointer rounded-[6px] group_button relative -top-[1rem] text-white cursor-pointer md:h-[8vh] h-[6vh] text-[4.1vw] items-center justify-center flex w-[61%] mx-auto'>
-                        <button onClick={handleLogout}>Log Out</button>
+                    <div className='items-center justify-center flex '>
+                        <div className='bg-[#F94040] cursor-pointer rounded-[6px] group_button absolute bottom-8  text-white cursor-pointer md:h-[7.6vh] h-[6vh] text-[4.1vw] rounded-[10px] items-center justify-center flex w-[61%] mx-auto'>
+                            <button onClick={handleLogout}>Log Out</button>
+                        </div>
                     </div>
                 </div>
 

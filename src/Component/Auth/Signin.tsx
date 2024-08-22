@@ -58,8 +58,8 @@ export const Signin = () => {
   localStorage.setItem('username', formState.username)
 
   return (
-    <div className="text-black w-screen py-[1rem] xl:py-0 h-screen xl:flex-row flex-col flex">
-      <div className="h-screen xl:block hidden  pt-[3.6rem] gap-[0vw] w-[49%] items-center gap-[4.6vw] flex-col flex signup-background">
+    <div className="text-black h-[100dvh] w-screen py-[1rem] xl:py-0 xl:flex-row flex-col flex">
+      <div className=" xl:block hidden  pt-[3.6rem] gap-[0vw] w-[49%] items-center gap-[4.6vw] flex-col flex signup-background">
         <div className="text-[#7D7D7D] w-[58%] text-center mx-auto tracking-[1.6px] font-extrabold leading-[3.3vw] uppercase text-[2.4vw]">
           Foursquare vgc online voting platform
         </div>
@@ -113,7 +113,7 @@ export const Signin = () => {
                 <input
                   type={!showPassword ? "password" : "text"}
                   name="password"
-                  inputMode="numeric"
+                  // inputMode="numeric"
                   value={formState.password}
                   onChange={handleChange}
                   required
