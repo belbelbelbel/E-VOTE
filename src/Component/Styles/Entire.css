@@ -52,6 +52,80 @@ input::placeholder {
 
 @media (min-width: 540px) and (max-width:640px){
     .group_button {
+        height: 11vw !important;
+    }
+    .group_buttonlogout {
+        height: 10vw !important;
+    }
+    .weblogo-png {
+        top: -27vw !important;
+    }
+    .form_sign {
         height: 12vw !important;
+        font-size: 4vw !important;
+    }
+    .line_suf {
+        display: none !important;
+    }
+    .form_button {
+        height: 12vw !important;
+        font-size: 3.5vw !important;
+    }
+    .signin-cont-surf {
+        width: 76% !important;
+    }
+    .group_but {
+        width: 76% !important;
+    }
+}
+
+@media (min-width: 1024px) and (max-width: 1024px) and (min-height: 400px) and (max-height: 600px) {
+    .group_button {
+        height: 8vw !important;
+        width: 90%;
+        font-size: 2.5vw !important;
+    }
+    .ipad_cont2 {
+        height: 700dvh !important;
+    }
+    .nexthub_1 img{
+        width: 38vw !important;
+    }
+    .nesthub-full {
+        gap: 2vw !important;
+    }
+    .nexthub_1 {
+        gap: 4vw !important;
+    }
+    .nexthub_1 span {
+        font-size: 4vw !important;
+    }
+    .group_buttonlogout {
+        height: 7vw !important;
+        width: 50% !important;
+        font-size: 2.5vw !important;
+        margin: 3rem 0 !important;
+        position:  relative !important;
+    }
+    .signin-cont-surf {
+        width: 60% !important;
+    }
+    .form_sign {
+        height: 8vw !important;
+        font-size: 3vw !important;
+    }
+    .form_button {
+        height: 7.3vw !important;
+        font-size: 3vw !important;
+        top: -4vw !important;
+    }
+    .group_but {
+        width: 50% !important;
+    }
+    .weblogo-png {
+        top: 4vw !important;
+        width: 30vw !important;
+        padding-bottom: 6rem;
+        position: relative;
     }
 }

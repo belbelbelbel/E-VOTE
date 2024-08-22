@@ -39,7 +39,7 @@ export const GroupC = () => {
             setShowModal(true);
         }
     }, []);
- 
+
     const handleSaveToNet = () => {
         if (voted !== null) {
             localStorage.setItem('GroupCId', voted.toString());
@@ -48,8 +48,8 @@ export const GroupC = () => {
     };
 
     return (
-        <div className='xl:h-full   w-full relative  flex flex-col xl:gap-[4.6rem]   gap-[5vw]  xl:items-center xl:justify-evenly group_cont'>
-            <div className='xl:pt-[5.5vw] flex flex-col xl:items-center xl:gap-[4.8rem] gap-[2rem] md:gap-[3rem]'>
+        <div className='xl:h-full z-50  w-full relative  flex flex-col xl:gap-[4.6rem]   gap-[5vw]  xl:items-center xl:justify-evenly group_cont'>
+            <div className='xl:pt-[5.5vw] flex flex-col xl:items-center xl:gap-[4rem] gap-[2rem] md:gap-[3rem]'>
                 <div className='flex xl:hidden z-50 text-white justify-between min-h-[25vw] md:min-h-[20vw] w-full items-center flex bg-[#0250FC]'>
                     <div className='w-[80%]  mx-auto flex  justify-between h-[15%]  items-center flex'>
                         <HiOutlineArrowLeft onClick={() => navigate(-1)} className='text-[6.4vw]' />
@@ -57,7 +57,7 @@ export const GroupC = () => {
                         <div></div>
                     </div>
                 </div>
-                <div className='text-[#171717] fonts-mid tracking-[0.2px] xl:block hidden'>Below are the candidates for the “Administrative Roles” category</div>
+                <div className='text-[#171717] fonts-mid relative tracking-[0.2px] text-[2vw] xl:block hidden'>Below are the candidates for the “Spiritual Development” category</div>
                 <div className='xl:hidden my-[0vw] md:my-[0vw] text-[4.5vw] text-center  tracking-[1px]'>Vote for the candidate of your choice</div>
                 <div className='flex xl:flex-row xl:px-0 px-10 md:px-20 flex-col xl:gap-[3vw] gap-[7vw] xl:items-center  justify-center'>
                     {imgArray.map((img) => (
@@ -78,9 +78,9 @@ export const GroupC = () => {
                     ))}
                 </div>
             </div>
-            <div className='w-[89%]  mx-auto xl:mt-0 mb-0 md:mb-[4vw] my-[0vw]   xl:h-0 h-full flex items-center relative xl:-top-[1vw] justify-center'>
+            <div className='w-[80%]  mx-auto xl:mt-0 mb-0 md:mb-[4vw] my-[0vw]   xl:h-0 h-full flex items-center relative xl:-top-[1vw] justify-center'>
                 <button
-                    className={`text-white  xl:w-[22%] w-full h-[9vh] md:h-[13.2vw] xl:text-[1.25vw] text-[4vw] mx-auto xl:h-[3.5vw] fonts-mid rounded-[6px] md:rounded-[10px] xl:rounded-[4px] mt-0 ${voted === null ? "bg-black bg-opacity-50 cursor-not-allowed" : "bg-[#0250FC]"}`}
+                    className={`text-white  xl:w-[44%] w-full h-[7.5vh] md:h-[13.2vw] xl:text-[1.5vw] text-[4vw] mx-auto xl:h-[3.5vw] fonts-mid rounded-[6px] md:rounded-[10px] xl:rounded-[4px] mt-0 ${voted === null ? "bg-black bg-opacity-50 cursor-not-allowed" : "bg-[#0250FC]"}`}
                     onClick={handleSaveToNet}
                     disabled={voted === null}
                 >
@@ -92,8 +92,8 @@ export const GroupC = () => {
                     <ModalSummary />
                 </div>
             )}
-             <div className='flex items-center relative justify-center'>
-                <div className="h-[1vw]  mx-[1.5vw] xl:hidden block w-[40%]  absolute -top-2 md:-top-10 mx-auto rounded-[4px] bg-black">
+            <div className='flex items-center relative justify-center'>
+                <div className="h-[1vw]  mx-[1.5vw] md:hidden block w-[40%] line_suf absolute -top-2 md:-top-10 mx-auto rounded-[4px] bg-black">
                 </div>
             </div>
         </div>

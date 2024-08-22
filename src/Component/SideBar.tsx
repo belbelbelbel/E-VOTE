@@ -17,7 +17,7 @@ export const SideBar = () => {
 
     }
     return (
-        <div>
+        <div className="flex flex-col h-full gap-[3vw] pt-[3vw]">
             <div className='flex flex-col h-full gap-[3vw] pt-[3vw]'>
                 <Link to='/votes' className="items-center flex justify-center">
                     <img
@@ -34,7 +34,7 @@ export const SideBar = () => {
                         className={`cursor-pointer h-[4.2vw] font-bold tracking-[4px] rounded-[2px] items-center justify-center flex w-full ${isActive("GroupA") ? "bg-[#0250FC] isActive" : "bg-[#C4C3C3]"
                             }`}
                     >
-                        <button>
+                      <button className="outline-0">
                             <div>GROUP A</div>
                         </button>
                     </Link>
@@ -43,26 +43,27 @@ export const SideBar = () => {
                         className={`cursor-pointer h-[4.2vw] font-bold tracking-[4px] rounded-[2px] items-center justify-center flex w-full ${isActive("GroupB") ? "bg-[#0250FC] isActive" : "bg-[#C4C3C3]"
                             }`}
                     >
-                        <button>
+                         <button className="outline-0">
                             <div>GROUP B</div>
                         </button>
                     </Link>
                     <Link
                         to="GroupC"
-                        className={`cursor-pointer h-[4.2vw] font-bold tracking-[4px] rounded-[2px] items-center justify-center flex w-full ${isActive("GroupC") ? "bg-[#0250FC] isActive" : "bg-[#C4C3C3]"
+                        className={`cursor-pointer outline-0  h-[4.2vw] font-bold tracking-[4px] rounded-[2px] items-center justify-center flex w-full ${isActive("GroupC") ? "bg-[#0250FC] isActive" : "bg-[#C4C3C3]"
                             }`}
                     >
-                        <button>
-                            <div>GROUP C</div>
+                        <button className="outline-0">
+                            <div >GROUP C</div>
                         </button>
                     </Link>
                 </div>
-                <div className="relative  top-[20vw] h-full bg-red-400 flex items-center justify-center">
-                    <div className='bg-[#F94040] rounded-[6px] absolute text-white cursor-pointer h-[3vw] text-[1.1vw] items-center justify-center flex w-[54%] mx-auto'>
+               
+            </div>
+            <div className="relative bottom-0  h-full  flex items-center justify-center">
+                    <div className='bg-[#F94040] rounded-[6px] absolute bottom-4 text-white cursor-pointer  h-[3vw] text-[1.1vw] items-center justify-center flex w-[54%] mx-auto'>
                         <button onClick={handleLogout} className=" absolute ">Log out</button>
                     </div>
                 </div>
-            </div>
         </div>
     );
 };
