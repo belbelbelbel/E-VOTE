@@ -49,15 +49,15 @@ export const GroupB = () => {
     return (
         <div className='xl:h-full z-50  w-full relative  flex flex-col xl:gap-[4.6rem]   gap-[5vw]  xl:items-center xl:justify-evenly group_cont'>
             <div className='xl:pt-[5.5vw] flex flex-col xl:items-center xl:gap-[4rem] gap-[2rem] md:gap-[3rem]'>
-                <div className='flex xl:hidden z-50 text-white justify-between min-h-[25vw] md:min-h-[20vw] w-full items-center flex bg-[#0250FC]'>
+                <div className='flex xl:hidden z-50 group_blue text-white justify-between min-h-[25vw] md:min-h-[20vw]  w-full  items-center flex bg-[#0250FC]'>
                     <div className='w-[80%]  mx-auto flex  justify-between h-[15%]  items-center flex'>
-                        <HiOutlineArrowLeft onClick={() => navigate(-1)} className='text-[6.4vw]' />
-                        <div className='tracking-[4px] text-[4.1vw] fonts-mid'>GROUP B</div>
+                        <HiOutlineArrowLeft onClick={() => navigate(-1)} className='text-[6.4vw] md:text-[5.1vw]' />
+                        <div className='tracking-[4px] md:text-[3.5vw] text-[4.1vw] fonts-mid'>GROUP B</div>
                         <div></div>
                     </div>
                 </div>
                 <div className='text-[#171717] fonts-mid relative tracking-[0.2px] text-[2vw] xl:block hidden'>Below are the candidates for the “Community Engagement” category</div>
-                <div className='xl:hidden my-[0vw] md:my-[0vw] text-[4.5vw] text-center  tracking-[1px]'>Vote for the candidate of your choice</div>
+                <div className='xl:hidden my-[0vw] md:my-[0vw] text-[3.5vw] text-center    tracking-[1px]'>Below are the candidates for the “Community Engagement” category</div>
                 <div className='flex xl:flex-row xl:px-0 px-10 md:px-20 flex-col xl:gap-[3vw] gap-[7vw] xl:items-center  justify-center'>
                     {imgArray.map((img) => (
                         <div key={img.id} className='flex xl:flex-col gap-[10vw] xl:gap-2'>
@@ -92,8 +92,8 @@ export const GroupB = () => {
                     <ModalSummary />
                 </div>
             )}
-            <div className='flex items-center relative justify-center'>
-                <div className="h-[1vw]  mx-[1.5vw] md:hidden block w-[40%]  absolute -top-2 md:-top-10 mx-auto rounded-[4px] bg-black">
+            <div className='flex items-center  relative justify-center'>
+                <div className="h-[1vw]  mx-[1.5vw] md:hidden block w-[40%] line_sufs  absolute -top-2 md:-top-10 mx-auto rounded-[4px] bg-black">
                 </div>
             </div>
         </div>
