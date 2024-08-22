@@ -13,6 +13,7 @@ export const SideBar = () => {
         localStorage.removeItem("GroupAId");
         localStorage.removeItem("GroupBId");
         localStorage.removeItem("GroupCId");
+        localStorage.removeItem("token")
         window.location.href = "/";
 
     }

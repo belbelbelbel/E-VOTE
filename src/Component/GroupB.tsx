@@ -37,7 +37,7 @@ export const GroupB = () => {
         }
         handleEletion();
     }, [])
-  
+
 
     const newArray = [];
     newArray.push(election);
@@ -127,10 +127,10 @@ export const GroupB = () => {
                     </div>
                 </div>
                 <div className="text-[#171717] fonts-mid tracking-[0.2px] xl:block hidden">
-                Below are the candidates for the “Community Engagement” category
+                    Below are the candidates for the “Community Engagement” category
                 </div>
                 <div className="xl:hidden my-[0vw] md:my-[0vw] text-[4.5vw] text-center tracking-[1px]">
-                Below are the candidates for the “Community Engagement” category
+                    Below are the candidates for the “Community Engagement” category
                 </div>
                 <div className="flex xl:flex-row xl:px-0 px-0 md:px-0 flex-col xl:gap-[3vw] gap-[7vw] xl:items-center justify-center">
                     {!isloading ? (
@@ -182,7 +182,7 @@ export const GroupB = () => {
                             onClick={handleSaveVote}
                             disabled={voted === null}
                         >
-                            {isloading ? "Saving..." :"Save vote"}
+                            {isloading ? "Saving..." : "Save vote"}
                         </button>
                     )
                 }
