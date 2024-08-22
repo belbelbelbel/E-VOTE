@@ -1,9 +1,7 @@
 import { SideBar } from './SideBar';
-import { Outlet, useLocation } from 'react-router';
+import { Outlet, useLocation} from 'react-router';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-
-// Custom hook to determine if the screen is mobile-sized
 const useIsMobile = () => {
     const [isMobile, setIsMobile] = useState(window.innerWidth < 1280);
 
@@ -20,7 +18,9 @@ const useIsMobile = () => {
 };
 
 export const VotersContainer = () => {
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem('token')
+    console.log(token)
+
     const [showOutlet, setShowOutlet] = useState(false);
     const [election, setElection] = useState<any>([]);
     const location = useLocation();
@@ -36,32 +36,32 @@ export const VotersContainer = () => {
         window.location.href = "/";
     };
 
-   useEffect(() => {
-    const handleEletion = async () => {
-        try {
-            const res = await fetch(`https://foursquarevgc-election-api.onrender.com/elections`, {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'authorization': `Bearer ${token}`
-                }
-            })
-            const result = await res.json();
-            setElection(result); 
-        } catch (error) {
-            console.log(error)
+    useEffect(() => {
+        const handleEletion = async () => {
+            try {
+                const res = await fetch(`https://foursquarevgc-election-api.onrender.com/elections`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'authorization': `Bearer ${token}`
+                    }
+                })
+                const result = await res.json();
+                setElection(result);
+            } catch (error) {
+                console.log(error)
+            }
         }
-    }   
-    handleEletion();
-   }, [token])
-    
+        handleEletion();
+    }, [])
+
     console.log('election on container page', election)
 
     useEffect(() => {
         setShowOutlet(location.pathname !== "/votes");
     }, [location]);
 
-    const capitalizeFirstLetter = (string:any) => {
+    const capitalizeFirstLetter = (string: any) => {
         return string.charAt(0).toUpperCase() + string.slice(1);
     };
 
@@ -77,7 +77,7 @@ export const VotersContainer = () => {
                         <SideBar />
                     </div>
                     <div className='xl:w-[78%] h-screen text-black bg-white'>
-                        <Outlet context={election}/>
+                        <Outlet context={election} />
                     </div>
                 </div>
             </div>
@@ -86,7 +86,7 @@ export const VotersContainer = () => {
             <div className='h-full w-full xl:hidden'>
                 {!isGroupRoute && (
                     <div className='flex md:pt-[4.5rem] nesthub-full pt-[3rem] md:gap-[3rem] gap-[2rem] flex-col'>
-                       <div className='flex items-center h-full justify-center nexthub_1 md:gap-[7vw] gap-[15vw] flex-col'>
+                        <div className='flex items-center h-full justify-center nexthub_1 md:gap-[7vw] gap-[15vw] flex-col'>
                             <div>
                                 <img
                                     src="/asset/Images/weblogo.png"
@@ -126,7 +126,7 @@ export const VotersContainer = () => {
                     {(!isMobile || isGroupRoute) && <Outlet />}
                 </div>
             </div>
-
+    
             <div className='flex items-center line_suf justify-center'>
                 <div className="h-[1vw] mx-[1.5vw] md:hidden block w-[40%] z-10 relative -top-2 md:-top-4 mx-auto rounded-[4px] bg-black"></div>
             </div>
