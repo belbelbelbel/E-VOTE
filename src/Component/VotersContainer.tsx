@@ -22,8 +22,11 @@ const useIsMobile = () => {
 export const VotersContainer = () => {
     const token = localStorage.getItem('token');
     const [showOutlet, setShowOutlet] = useState(false);
+    const [election, setElection] = useState<any>([]);
     const location = useLocation();
     const isMobile = useIsMobile();
+
+    console.log('outlet', <Outlet />)
 
     const handleLogout = () => {
         localStorage.removeItem("username");
@@ -33,25 +36,26 @@ export const VotersContainer = () => {
         window.location.href = "/";
     };
 
-    useEffect(() => {
-        const handleElection = async (id:any) => {
-            try {
-                const res = await fetch(`https://foursquarevgc-election-api.onrender.com/elections/${id}`, {
-                    method: 'GET',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${token}`
-                    }
-                });
-                const result = await res.json();
-                console.log(result);
-            } catch (error) {
-                console.log(error);
-            }
-        };
-
-        handleElection(token);
-    }, [token]);
+   useEffect(() => {
+    const handleEletion = async () => {
+        try {
+            const res = await fetch(`https://foursquarevgc-election-api.onrender.com/elections`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'authorization': `Bearer ${token}`
+                }
+            })
+            const result = await res.json();
+            setElection(result); 
+        } catch (error) {
+            console.log(error)
+        }
+    }   
+    handleEletion();
+   }, [token])
+    
+    console.log('election on container page', election)
 
     useEffect(() => {
         setShowOutlet(location.pathname !== "/votes");
@@ -73,7 +77,7 @@ export const VotersContainer = () => {
                         <SideBar />
                     </div>
                     <div className='xl:w-[78%] h-screen text-black bg-white'>
-                        <Outlet />
+                        <Outlet context={election}/>
                     </div>
                 </div>
             </div>
