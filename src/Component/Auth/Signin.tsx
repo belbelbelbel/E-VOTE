@@ -74,12 +74,12 @@ export const Signin = () => {
       </div>
       <div className="xl:w-[51%] w-screen h-[95dvh] mx-auto xl:pt-[5rem] flex flex-col items-center justify-center">
         <div className="flex flex-col xl:w-[60%] w-[83%] h-full justify-center xl:justify-start xl:gap-[11.4vw] mx-auto">
-          <div className="items-center flex justify-center">
+          <div className="items-center flex relative xl:pt-0 pt-0 justify-center">
             <img
               loading="lazy"
               src="/asset/Images/weblogo.png"
               alt="weblogo"
-              className="xl:w-[14vw] w-[50vw] w-[44vw] relative -top-[37vw] md:-top-[15vw] xl:top-0 xl:relative"
+              className="xl:w-[14vw] w-[50vw] w-[44vw] absolute -top-[37vw] md:-top-[15vw] xl:top-0 xl:relative"
             />
           </div>
           <form onSubmit={handleSubmit} className="flex flex-col gap-[2vw] xl:gap-[1.1vw]">
