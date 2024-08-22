@@ -2,6 +2,8 @@ import { SideBar } from './SideBar';
 import { Outlet, useLocation} from 'react-router';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const useIsMobile = () => {
     const [isMobile, setIsMobile] = useState(window.innerWidth < 1280);
 
@@ -19,6 +21,11 @@ const useIsMobile = () => {
 
 export const VotersContainer = () => {
     const token = localStorage.getItem('token')
+    useEffect(() => {
+        if (!token) {
+          toast.error("Your time has lapsed please login")
+        }
+      }, [token])
     console.log(token)
 
     const [showOutlet, setShowOutlet] = useState(false);
@@ -70,6 +77,7 @@ export const VotersContainer = () => {
 
     return (
         <div className='w-screen relative z-40 h-[100dvh]'>
+            <ToastContainer />
             {/* Desktop Layout */}
             <div className='w-screen h-screen flex xl:flex hidden'>
                 <div className='w-screen h-screen xl:flex hidden flex'>

@@ -6,22 +6,16 @@ import { GroupA } from './Component/GroupA'
 import { GroupB } from './Component/GroupB'
 import { GroupC } from './Component/GroupC'
 import { Greeting } from './Component/Greeting'
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
-import { useEffect } from 'react'
+
 
 function App() {
   const token = localStorage.getItem('token')
   console.log(token)
-  useEffect(() => {
-    if (!token) {
-      toast.error("Your time has lapsed please login")
-    }
-  }, [token])
+
   return (
     <div>
-      <ToastContainer />
+      
       <Routes>
         <Route path="/" element={<Signin />} />
         <Route path="/votes" element={token ? <VotersContainer /> : <Navigate to="/" />}>
