@@ -3,9 +3,11 @@ import { ModalSummary } from "./ModalSummary";
 import { HiOutlineArrowLeft } from "react-icons/hi2";
 import { useNavigate } from "react-router";
 import { FeedbackError } from "./utils/FeedbackError";
+
 export const GroupC = () => {
     const token = localStorage.getItem("token");
     const [showErrorModal, setShowErrorModal] = useState(false);
+    const [isTextloading, setIsTextLoading] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
     const [voted, setVoted] = useState<number | null>(null);
     const [showModal, setShowModal] = useState(false);
@@ -37,7 +39,7 @@ export const GroupC = () => {
         }
         handleEletion();
     }, [])
-  
+
 
     const newArray = [];
     newArray.push(election);
@@ -54,10 +56,10 @@ export const GroupC = () => {
     candidates?.forEach((candidate: any) => {
         console.log("Candidate:", candidate);
     });
-    console.log("candidTEID",candidateId)
+    console.log("candidTEID", candidateId)
 
     const callSaveVoteApi = async (updatedPayload: any) => {
-    
+        setIsTextLoading(true)
         try {
             const res = await fetch(
                 `https://foursquarevgc-election-api.onrender.com/election-records/vote/${electionId}`,
@@ -70,7 +72,6 @@ export const GroupC = () => {
                     body: JSON.stringify(updatedPayload),
                 }
             );
-
             if (res.ok) {
                 setShowModal(true);
             } else {
@@ -84,6 +85,10 @@ export const GroupC = () => {
             );
             setShowErrorModal(true);
         }
+        finally {
+            setIsTextLoading(false)
+        }
+
     };
 
     const handleVote = (candidateId: number) => {
@@ -91,26 +96,30 @@ export const GroupC = () => {
     };
 
     const handleSaveVote = async () => {
-        setIsLoading(true)
+        setIsTextLoading(true)
         try {
             if (voted !== null) {
                 localStorage.setItem("GroupAId", voted.toString());
+
                 setPayload((prevPayload) => {
                     const updatedPayload = {
                         ...prevPayload,
                         groupId: groupId,
                         candidateId: candidateId,
                     };
+
                     callSaveVoteApi(updatedPayload);
+
                     return updatedPayload;
                 });
+
                 console.log(voted);
             }
         } catch (error) {
             error
         }
         finally {
-            setIsLoading(false);
+            setIsTextLoading(false);
         }
     };
 
@@ -129,10 +138,10 @@ export const GroupC = () => {
                     </div>
                 </div>
                 <div className="text-[#171717] fonts-mid tracking-[0.2px] xl:block hidden">
-                Below are the candidates for the “Spiritual Development” category
+                    Below are the candidates for the “Spiritual Development” category
                 </div>
                 <div className="xl:hidden my-[0vw] md:my-[0vw] text-[4.5vw] text-center tracking-[1px]">
-                Below are the candidates for the “Spiritual Development” category
+                    Below are the candidates for the “Spiritual Development” category
                 </div>
                 <div className="flex xl:flex-row xl:px-0 px-0 md:px-0 flex-col xl:gap-[3vw] gap-[7vw] xl:items-center justify-center">
                     {!isloading ? (
@@ -165,9 +174,9 @@ export const GroupC = () => {
                             {[...Array(3)].map((_, index) => (
                                 <div key={index} className="flex xl:flex-col items-center gap-[10vw] xl:gap-2">
                                     <div className="skeleton-img xl:w-[21vw] w-[33vw] h-[25vw] rounded-[3vw] xl:h-[21vw] xl:rounded-[0.8vw]"></div>
-                                    <div>
-                                        <div className="skeleton-text xl:w-[21vw] w-[30vw] h-[1vw] mt-2"></div>
-                                        <div className="skeleton-button xl:w-[60%] w-[31vw] h-[8vw] xl:h-[3vw] mt-3"></div>
+                                    <div className="flex flex-col items-center">
+                                        <div className="skeleton-text xl:w-[21vw]  w-[30vw] h-[1vw] mt-2"></div>
+                                        <div className="skeleton-button xl:w-[60%] text-center w-[31vw] h-[8vw] xl:h-[3vw] mt-3"></div>
                                     </div>
                                 </div>
                             ))}
@@ -177,17 +186,15 @@ export const GroupC = () => {
 
             </div>
             <div className='w-[80%]  mx-auto xl:mt-0 mb-0 md:mb-[4vw] my-[0vw]   xl:h-0 h-full flex items-center relative xl:-top-[1vw] justify-center'>
-                {
-                    !isloading && (
+             
                         <button
                             className={`text-white  xl:w-[44%] w-full h-[6.5vh] md:h-[13.2vw] xl:text-[1.5vw] text-[4vw] mx-auto xl:h-[3.5vw] fonts-mid rounded-[6px] md:rounded-[10px] xl:rounded-[4px] mt-0 ${voted === null ? "bg-black bg-opacity-50 cursor-not-allowed" : "bg-[#0250FC]"}`}
                             onClick={handleSaveVote}
                             disabled={voted === null}
                         >
-                            {isloading ? "Saving..." :"Save vote"}
+                            {isTextloading ? "Saving..." : "Save vote"}
                         </button>
-                    )
-                }
+            
             </div>
             {showModal && (
                 <div className="h-full w-full z-40 inset-0 bg-[#171717] opacity-90 absolute flex items-center justify-center">
