@@ -28,6 +28,8 @@ export const GroupA = () => {
         },
     ];
 
+    console.log('election on a  rdytdytcdyutdcutydutyy*******************')
+    
     useEffect(() => {
         const storedVote = localStorage.getItem('GroupAId');
         if (storedVote) {
