@@ -114,7 +114,7 @@ export const GroupC = () => {
                 <div className="flex xl:hidden z-50 text-white justify-between min-h-[25vw] md:min-h-[20vw] w-full items-center flex bg-[#0250FC]">
                     <div className="w-[80%] mx-auto flex justify-between h-[15%] items-center flex">
                         <HiOutlineArrowLeft
-                            onClick={() => navigate(-1)}
+                            onClick={() => navigate("/votes")}
                             className="text-[6.4vw]"
                         />
                         <div className="tracking-[4px] text-[4.1vw] fonts-mid">GROUP C</div>
