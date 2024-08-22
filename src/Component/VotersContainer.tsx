@@ -1,9 +1,25 @@
 import { SideBar } from './SideBar';
-import { Outlet, useLocation} from 'react-router';
+import { Outlet, useLocation, useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { ElectionOnHold } from './ElectionOnHold';
+import { ElectionResults } from './ElectionResults';
+const electionData = {
+    categoryOne: [
+        { name: "Alice Johnson", votes: 1200 },
+        { name: "Bob Smith", votes: 950 },
+    ],
+    categoryTwo: [
+        { name: "Carol Williams", votes: 800 },
+        { name: "David Brown", votes: 650 },
+    ],
+    categoryThree: [
+        { name: "Eve Davis", votes: 400 },
+        { name: "Frank Miller", votes: 350 },
+    ],
+};
 const useIsMobile = () => {
     const [isMobile, setIsMobile] = useState(window.innerWidth < 1280);
 
@@ -18,31 +34,28 @@ const useIsMobile = () => {
 
     return isMobile;
 };
-
 export const VotersContainer = () => {
     const token = localStorage.getItem('token')
+    const navigate = useNavigate()
+    const [showElectionHold, setShowElectionHold] = useState(false)
+    const [showElectionResult, setShowElectionResult] = useState(false)
+    const capitalizeFirstLetter = (string: any) => {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    };
+
+    const username = capitalizeFirstLetter(localStorage.getItem('username'));
     useEffect(() => {
         if (!token) {
-          toast.error("Your time has lapsed please login")
+            toast.error("Your time has lapsed please login")
+            navigate('/')
         }
-      }, [token])
+    }, [token])
     console.log(token)
-
     const [showOutlet, setShowOutlet] = useState(false);
     const [election, setElection] = useState<any>([]);
     const location = useLocation();
     const isMobile = useIsMobile();
-
     console.log('outlet', <Outlet />)
-
-    const handleLogout = () => {
-        localStorage.removeItem("username");
-        localStorage.removeItem("GroupAId");
-        localStorage.removeItem("GroupBId");
-        localStorage.removeItem("GroupCId");
-        window.location.href = "/";
-    };
-
     useEffect(() => {
         const handleEletion = async () => {
             try {
@@ -61,6 +74,37 @@ export const VotersContainer = () => {
         }
         handleEletion();
     }, [])
+    const handleLogout = () => {
+        localStorage.removeItem("username");
+        localStorage.removeItem("GroupAId");
+        localStorage.removeItem("GroupBId");
+        localStorage.removeItem("GroupCId");
+        window.location.href = "/";
+    };
+    console.log("the election is", election)
+    console.log("the election is", election)
+    const start_time = `2024-08-22T22:00:00.000Z`
+    // const start_time = election[0]?.start_time
+    console.log('start time is here', start_time)
+    const stop_time = election[0]?.stop_time
+    console.log(new Date(start_time))
+    console.log(new Date(stop_time))
+    useEffect(() => {
+        if (start_time === "2024-08-22T22:00:00.000Z" ) {
+            setShowElectionHold(false)
+            setShowElectionResult(false)
+        }
+        else if (new Date(stop_time)) {
+            setShowElectionResult(true)
+            setShowElectionHold(false)
+        }
+        else {
+            setShowElectionHold(false)
+            setShowElectionResult(false)
+        }
+    }, [new Date(start_time), new Date(stop_time)])
+
+
 
     console.log('election on container page', election)
 
@@ -68,15 +112,20 @@ export const VotersContainer = () => {
         setShowOutlet(location.pathname !== "/votes");
     }, [location]);
 
-    const capitalizeFirstLetter = (string: any) => {
-        return string.charAt(0).toUpperCase() + string.slice(1);
-    };
-
-    const username = capitalizeFirstLetter(localStorage.getItem('username'));
     const isGroupRoute = ["/votes/GroupA", "/votes/GroupB", "/votes/GroupC"].includes(location.pathname);
 
     return (
-        <div className='w-screen relative z-40 h-[100dvh]'>
+        <div className='w-screen h-screen relative z-40 h-[100dvh]'>
+            {
+                showElectionHold && (
+                    <ElectionOnHold start_time={start_time} stop_time={stop_time} />
+                )
+            }
+            {
+                showElectionResult && (
+                    <ElectionResults results={electionData} />
+                )
+            }
             <ToastContainer />
             {/* Desktop Layout */}
             <div className='w-screen h-screen flex xl:flex hidden'>
@@ -111,13 +160,13 @@ export const VotersContainer = () => {
                             <div className='fonts-mid text-[4.3vw]'>Select a category to vote</div>
                             <div className='flex flex-col md:gap-10 gap-5'>
                                 <Link to="GroupA" className='bg-[#0250FC] group_button fonts-small font-extrabold rounded-[10px] flex items-center text-white text-[4.7vw] tracking-[4px] justify-center w-[100%] md:h-[9vh] mx-auto h-[8vh]'>
-                                    <button>GROUP A</button>
+                                    <button>Category A</button>
                                 </Link>
                                 <Link to="GroupB" className='bg-[#0250FC] group_button fonts-small font-extrabold rounded-[10px] flex items-center text-white text-[4.7vw] tracking-[4px] justify-center w-[100%] md:h-[9vh] mx-auto h-[8vh]'>
-                                    <button>GROUP B</button>
+                                    <button>Category B</button>
                                 </Link>
                                 <Link to="GroupC" className='bg-[#0250FC] group_button rounded-[10px] fonts-small font-extrabold flex items-center text-white text-[4.7vw] tracking-[4px] justify-center w-[100%] md:h-[9vh] mx-auto h-[8vh]'>
-                                    <button>GROUP C</button>
+                                    <button>Category C</button>
                                 </Link>
                             </div>
                         </div>
@@ -134,7 +183,9 @@ export const VotersContainer = () => {
                     {(!isMobile || isGroupRoute) && <Outlet />}
                 </div>
             </div>
-    
+
+
+
             <div className='flex items-center line_suf justify-center'>
                 <div className="h-[1vw] mx-[1.5vw] md:hidden block w-[40%] z-10 relative -top-2 md:-top-4 mx-auto rounded-[4px] bg-black"></div>
             </div>

@@ -18,7 +18,7 @@ function App() {
       
       <Routes>
         <Route path="/" element={<Signin />} />
-        <Route path="/votes" element={token ? <VotersContainer /> : <Navigate to="/" />}>
+        <Route path="/votes" element={<VotersContainer />}>
           <Route index element={<Greeting />} />
           <Route path='GroupA' element={<GroupA />} />
           <Route path='GroupB' element={<GroupB />} />

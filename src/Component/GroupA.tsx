@@ -135,7 +135,7 @@ export const GroupA = () => {
                             onClick={() => navigate("/votes")}
                             className="text-[6.4vw]"
                         />
-                        <div className="tracking-[4px] text-[4.1vw] fonts-mid">GROUP A</div>
+                        <div className="tracking-[4px] text-[4.1vw] fonts-mid">Category A</div>
                         <div></div>
                     </div>
                 </div>
@@ -152,9 +152,10 @@ export const GroupA = () => {
                                 <div key={candidate._id} className="flex xl:flex-col gap-[10vw] xl:gap-2">
                                     <div>
                                         <img
-                                            src="/asset/Images/vecimg.png"
+                                            // src="/asset/Images/vecimg.png"
+                                            src={candidate.image}
                                             alt={candidate.name}
-                                            className="xl:w-[21vw] w-[30vw] h-[25vw] rounded-[3vw] xl:h-[21vw] xl:rounded-[0.8vw]"
+                                            className="xl:w-[21vw] w-[30vw] object-cover h-[25vw] rounded-[3vw] xl:h-[21vw] xl:rounded-[0.8vw]"
                                         />
                                     </div>
                                     <div className="flex flex-col items-center justify-center xl:gap-2">

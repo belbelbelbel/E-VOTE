@@ -36,7 +36,7 @@ export const SideBar = () => {
                             }`}
                     >
                       <button className="outline-0">
-                            <div>GROUP A</div>
+                            <div>Category A</div>
                         </button>
                     </Link>
                     <Link
@@ -45,7 +45,7 @@ export const SideBar = () => {
                             }`}
                     >
                          <button className="outline-0">
-                            <div>GROUP B</div>
+                            <div>Category B</div>
                         </button>
                     </Link>
                     <Link
@@ -54,7 +54,7 @@ export const SideBar = () => {
                             }`}
                     >
                         <button className="outline-0">
-                            <div >GROUP C</div>
+                            <div >Category C</div>
                         </button>
                     </Link>
                 </div>
