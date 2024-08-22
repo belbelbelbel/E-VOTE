@@ -80,7 +80,7 @@ export const GroupC = () => {
             </div>
             <div className='w-[80%]  mx-auto xl:mt-0 mb-0 md:mb-[4vw] my-[0vw]   xl:h-0 h-full flex items-center relative xl:-top-[1vw] justify-center'>
                 <button
-                    className={`text-white  xl:w-[44%] w-full h-[7.5vh] md:h-[13.2vw] xl:text-[1.5vw] text-[4vw] mx-auto xl:h-[3.5vw] fonts-mid rounded-[6px] md:rounded-[10px] xl:rounded-[4px] mt-0 ${voted === null ? "bg-black bg-opacity-50 cursor-not-allowed" : "bg-[#0250FC]"}`}
+                    className={`text-white  xl:w-[44%] w-full h-[6.5vh] md:h-[13.2vw] xl:text-[1.5vw] text-[4vw] mx-auto xl:h-[3.5vw] fonts-mid rounded-[6px] md:rounded-[10px] xl:rounded-[4px] mt-0 ${voted === null ? "bg-black bg-opacity-50 cursor-not-allowed" : "bg-[#0250FC]"}`}
                     onClick={handleSaveToNet}
                     disabled={voted === null}
                 >

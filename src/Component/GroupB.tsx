@@ -67,7 +67,8 @@ export const GroupB = () => {
                             <div className='flex flex-col items-center justify-center xl:gap-2'>
                                 <div className='text-center fonts-mid md:text-[3.6vw] xl:text-[1.3vw] font-medium'>{img.name}</div>
                                 <button
-                                    className={`text-white  xl:w-[60%] w-[31vw] md:w-[29vw]  xl:text-[1.25vw]  text-[4vw] mx-auto xl:h-[3vw] md:h-[8vw] line_suf h-[9vw] rounded-[4px] md:rounded-[4px] fonts-mid xl:rounded-[4px] mt-3 ${voted === img.id ? "bg-[#209254]" : "bg-[#828282]"}`}
+                                    className={`text-white  xl:w-[60%] w-[31vw] md:w-[29vw]  xl:text-[1.25vw]  text-[4vw] mx-auto xl:h-[3vw] md:h-[8vw] h-[9vw] rounded-[4px] md:rounded-[4px] fonts-mid xl:rounded-[4px] mt-3 
+                                        ${voted === img.id ? "bg-[#209254]" : "bg-[#828282]"}`}
                                     onClick={() => handleVote(img.id)}
                                 >
                                     {voted === img.id ? 'Voted' : "Vote"}
@@ -79,7 +80,7 @@ export const GroupB = () => {
             </div>
             <div className='w-[80%]  mx-auto xl:mt-0 mb-0 md:mb-[4vw] my-[0vw]   xl:h-0 h-full flex items-center relative xl:-top-[1vw] justify-center'>
                 <button
-                    className={`text-white  xl:w-[44%] w-full h-[7.5vh] md:h-[13.2vw] xl:text-[1.5vw] text-[4vw] mx-auto xl:h-[3.5vw] fonts-mid rounded-[6px] md:rounded-[10px] xl:rounded-[4px] mt-0 ${voted === null ? "bg-black bg-opacity-50 cursor-not-allowed" : "bg-[#0250FC]"}`}
+                    className={`text-white  xl:w-[44%] w-full h-[6.5vh] md:h-[13.2vw] xl:text-[1.5vw] text-[4vw] mx-auto xl:h-[3.5vw] fonts-mid rounded-[6px] md:rounded-[10px] xl:rounded-[4px] mt-0 ${voted === null ? "bg-black bg-opacity-50 cursor-not-allowed" : "bg-[#0250FC]"}`}
                     onClick={handleSaveToNet}
                     disabled={voted === null}
                 >

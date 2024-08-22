@@ -131,7 +131,7 @@ export const Signin = () => {
               {
                 !isloading && (
                   <div className="relative flex fonts-mid items-center justify-center">
-                    <div className="text-[#FF0000] top-0 xl:-top-3  absolute xl:text-[1.3vw]  text-center w-[60%] mx-auto xl:text-[1.1vw] md:text-[4.2vw]">
+                    <div className="text-[#FF0000] top-0  xl:-top-3  absolute xl:text-[1.3vw] login_error text-center w-[60%] mx-auto xl:text-[1.1vw] md:text-[3.2vw]">
                       {error}
                     </div>
                   </div>

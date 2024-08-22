@@ -112,12 +112,16 @@ input::placeholder {
     }
     .form_sign {
         height: 8vw !important;
-        font-size: 3vw !important;
+        font-size: 2.6vw !important;
+    }
+    .login_error {
+        font-size: 2.4vw !important;
+        top: -3.1vw !important;
     }
     .form_button {
         height: 7.3vw !important;
-        font-size: 3vw !important;
-        top: -4vw !important;
+        font-size: 2.6vw !important;
+        top: -3vw !important;
     }
     .group_but {
         width: 50% !important;
