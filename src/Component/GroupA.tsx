@@ -137,10 +137,10 @@ export const GroupA = () => {
           </div>
         </div>
         <div className="text-[#171717] fonts-mid tracking-[0.2px] xl:block hidden">
-          Below are the candidates for the “Administrative Roles” category
+        Below are the candidates for the “Council Member” Category A
         </div>
         <div className="xl:hidden my-[0vw] md:my-[0vw] text-[4.5vw] text-center tracking-[1px]">
-          Below are the candidates for the “Administrative Roles” category
+        Below are the candidates for the “Council Member” Category A
         </div>
         <div className="flex xl:flex-row xl:px-0 px-0 md:px-0 flex-col xl:gap-[3vw] gap-[7vw] xl:items-center justify-center">
           {!isloading ? (
@@ -158,12 +158,12 @@ export const GroupA = () => {
                       className="xl:w-[21vw] w-[30vw] object-cover h-[25vw] rounded-[3vw] xl:h-[21vw] xl:rounded-[0.8vw]"
                     />
                   </div>
-                  <div className="flex flex-col items-center justify-center xl:gap-2">
-                    <div className="text-center fonts-mid md:text-[3.6vw] xl:text-[1.3vw] font-medium">
+                  <div className="flex flex-col relative items-center justify-center xl:gap-2">
+                    <div className="text-center absolute top-0 md:relative fonts-mid whitespace-nowrap md:text-[3.6vw] xl:text-[1.3vw] font-medium">
                       {candidate.name}
                     </div>
                     <button
-                      className={`text-white xl:w-[60%] w-[31vw] md:w-[29vw] xl:text-[1.25vw] text-[4vw] mx-auto xl:h-[3.5vw] md:h-[8vw] h-[9vw] rounded-[4px] md:rounded-[4px] xl:rounded-[4px] mt-3 ${
+                      className={`text-white xl:w-[60%] w-[31vw] relative  md:w-[29vw] xl:text-[1.25vw] text-[4vw] mx-auto xl:h-[3.5vw] md:h-[8vw] h-[9vw] rounded-[4px] md:rounded-[4px] xl:rounded-[4px] mt-3 ${
                         voted === candidate._id
                           ? "bg-[#209254]"
                           : "bg-[#828282]"

@@ -135,10 +135,10 @@ export const GroupB = () => {
           </div>
         </div>
         <div className="text-[#171717] fonts-mid tracking-[0.2px] xl:block hidden">
-          Below are the candidates for the “Community Engagement” category
+        Below are the candidates for the “Council Member” Category B
         </div>
         <div className="xl:hidden my-[0vw] md:my-[0vw] text-[4.5vw] text-center tracking-[1px]">
-          Below are the candidates for the “Community Engagement” category
+        Below are the candidates for the “Council Member” Category B
         </div>
         <div className="flex xl:flex-row xl:px-0 px-0 md:px-0 flex-col xl:gap-[3vw] gap-[7vw] xl:items-center justify-center">
           {!isloading ? (
@@ -156,8 +156,8 @@ export const GroupB = () => {
                       className="xl:w-[21vw] w-[30vw] object-cover  h-[25vw] rounded-[3vw] xl:h-[21vw] xl:rounded-[0.8vw]"
                     />
                   </div>
-                  <div className="flex flex-col items-center justify-center xl:gap-2">
-                    <div className="text-center fonts-mid md:text-[3.6vw] xl:text-[1.3vw] font-medium">
+                  <div className="flex flex-col relative items-center justify-center xl:gap-2">
+                    <div className="text-center absolute top-0 md:relative fonts-mid whitespace-nowrap md:text-[3.6vw] xl:text-[1.3vw] font-medium">
                       {candidate.name}
                     </div>
                     <button
