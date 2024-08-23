@@ -14,9 +14,10 @@ export const GroupC = () => {
     const [payload, setPayload] = useState({});
     const [isloading, setIsLoading] = useState(false);
     const navigate = useNavigate();
-    console.log(payload);
     const [election, setElection] = useState<any>([]);
-    console.log(election)
+
+    console.log(payload);
+
     useEffect(() => {
         const handleEletion = async () => {
             setIsLoading(true)
@@ -42,21 +43,17 @@ export const GroupC = () => {
 
     const newArray = [];
     newArray.push(election);
-    console.log(newArray);
     const electionData: any = newArray[0];
-    console.log(electionData[0]?.groups[2]);
     const electionId = electionData?.[0]?._id;
-    console.log(electionId);
-    // const group = electionData?.[0]?.groups[0];
     const groupId = electionData?.[0]?.groups[2]?._id;
-    console.log(groupId);
     const candidates = electionData[0]?.groups[2].candidates;
     const candidateId =
         candidates && candidates.length > 0 ? candidates[0]._id : " ";
+    
     candidates?.forEach((candidate: any) => {
         console.log("Candidate:", candidate);
     });
-    console.log("candidTEID", candidateId)
+
 
     const callSaveVoteApi = async (updatedPayload: any) => {
         setIsTextLoading(true)

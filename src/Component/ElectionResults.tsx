@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 export const ElectionResults = () => {
-  const [isloading,setIsLoading] = useState(false)
+  // const [isloading,setIsLoading] = useState(false)
   const [electionResult, setElectionResult] = useState<any>([]);
+  console.log(electionResult)
+  // console.log(isloading)
   const token = localStorage.getItem("token");
   const [election, setElection] = useState<any>([]);
   useEffect(() => {
       const handleEletion = async () => {
-          setIsLoading(true)
+          // setIsLoading(true)
           try {
               const res = await fetch(`https://foursquarevgc-election-api.onrender.com/elections`, {
                   method: 'GET',
@@ -21,7 +23,7 @@ export const ElectionResults = () => {
               console.log(error)
           }
           finally {
-              setIsLoading(false)
+              // setIsLoading(false)
           }
       }
       handleEletion();
@@ -31,13 +33,13 @@ export const ElectionResults = () => {
     localStorage.removeItem("GroupAId");
     localStorage.removeItem("GroupBId");
     localStorage.removeItem("GroupCId");
-    localStorage.removeItem("token")
+    localStorage.removeItem("token");
     window.location.href = "/";
 }
 const electionId  = election[0]?._id
 useEffect(() => {
   const handleEletion = async () => {
-    setIsLoading(true);
+    // setIsLoading(true);
     try {
       const res = await fetch(`https://foursquarevgc-election-api.onrender.com/election-records/results/${electionId}`,{
         method: 'GET',
@@ -52,29 +54,29 @@ useEffect(() => {
     } catch (error) {
       console.log(error);
     } finally {
-      setIsLoading(false);
+      // setIsLoading(false);
     }
   };
   handleEletion();
 }, [1]);
 
-const electionData = {
-  categoryOne: [
-      { name: "Candidate One", votes: 'N/A' },
-      { name: "Candidate Two", votes: 'N/A' },
-      { name: "Candidate Three", votes: 'N/A' },
-  ],
-  categoryTwo: [
-    { name: "Candidate One", votes: 'N/A' },
-    { name: "Candidate Two", votes: 'N/A' },
-    { name: "Candidate Three", votes: 'N/A' },
-  ],
-  categoryThree: [
-    { name: "Candidate One", votes: 'N/A' },
-    { name: "Candidate Two", votes: 'N/A' },
-    { name: "Candidate Three", votes: 'N/A' },
-  ],
-};
+  const electionData = {
+    categoryOne: [
+      { name: "Candidate One", votes: "N/A" },
+      { name: "Candidate Two", votes: "N/A" },
+      { name: "Candidate Three", votes: "N/A" },
+    ],
+    categoryTwo: [
+      { name: "Candidate One", votes: "N/A" },
+      { name: "Candidate Two", votes: "N/A" },
+      { name: "Candidate Three", votes: "N/A" },
+    ],
+    categoryThree: [
+      { name: "Candidate One", votes: "N/A" },
+      { name: "Candidate Two", votes: "N/A" },
+      { name: "Candidate Three", votes: "N/A" },
+    ],
+  };
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
@@ -96,7 +98,7 @@ const electionData = {
               </tr>
             </thead>
             <tbody>
-              {electionData?.categoryOne?.map((candidate:any, index:any) => (
+              {electionData?.categoryOne?.map((candidate: any, index: any) => (
                 <tr
                   key={index}
                   className="text-gray-700 hover:bg-blue-50 transition-colors"
@@ -125,7 +127,7 @@ const electionData = {
               </tr>
             </thead>
             <tbody>
-              {electionData?.categoryTwo?.map((candidate:any, index:any) => (
+              {electionData?.categoryTwo?.map((candidate: any, index: any) => (
                 <tr
                   key={index}
                   className="text-gray-700 hover:bg-green-50 transition-colors"
