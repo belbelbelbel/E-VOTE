@@ -16,7 +16,7 @@ const CountdownTimer = () => {
   }
 
   return (
-    <div className="text-red-500 xl:text-[2.5vw] md:text-[3vw] text-[5vw] xl:top-0   fonts-mid font-extrabold absolute right-0">
+    <div className="text-red-500 xl:text-[2.5vw] md:text-[3vw] text-[5vw] xl:-top-10   fonts-mid font-extrabold absolute right-0">
       <Countdown date={targetTime} />
     </div>
   );

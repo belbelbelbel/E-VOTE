@@ -6,7 +6,7 @@ export const Greeting = () => {
         return string.charAt(0).toUpperCase() + string.slice(1);
     };
     var name =  localStorage.getItem('username')
-    const username = capitalizeFirstLetter(name);
+    const username = name;
 
     return (
         <div className='h-full w-full flex xl:flex hidden  justify-center'>

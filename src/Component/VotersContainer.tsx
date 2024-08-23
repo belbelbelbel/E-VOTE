@@ -27,11 +27,11 @@ export const VotersContainer = () => {
     const navigate = useNavigate();
     const [showElectionHold, setShowElectionHold] = useState(false);
     const [showElectionResult, setShowElectionResult] = useState(false);
-    const capitalizeFirstLetter = (string: any) => {
-        return string.charAt(0).toUpperCase() + string.slice(1);
-    };
+    // const capitalizeFirstLetter = (string: any) => {
+    //     return string.charAt(0)?.toUpperCase() + string.slice(1);
+    // };
 
-    const username = capitalizeFirstLetter(localStorage.getItem("username"));
+    const username = localStorage.getItem("username")
 
     useEffect(() => {
         if (!token) {
