@@ -2,10 +2,9 @@ import { useEffect, useState } from "react";
 export const ElectionResults = () => {
   const [isloading, setIsLoading] = useState(false);
   const [electionResult, setElectionResult] = useState<any>([]);
-  console.log(electionResult);
-  console.log(isloading);
   const token = localStorage.getItem("token");
   const [election, setElection] = useState<any>([]);
+
   useEffect(() => {
     const handleEletions = async () => {
       try {
@@ -26,8 +25,8 @@ export const ElectionResults = () => {
       }
     };
     handleEletions();
-  });
-  
+  }, []);
+
   const handleLogout = () => {
     const keysToRemove = [
       "username",
@@ -43,7 +42,6 @@ export const ElectionResults = () => {
   };
 
   const electionId = election[0]?._id;
-  console.log(electionId);
 
   useEffect(() => {
     const handleEletion = async () => {
@@ -61,7 +59,6 @@ export const ElectionResults = () => {
         );
         const result = await res.json();
         setElectionResult(result);
-        console.log(result);
       } catch (error) {
         console.log(error);
       } finally {

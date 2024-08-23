@@ -11,6 +11,7 @@ export const GroupA = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [voted, setVoted] = useState<number | null>(null);
   const [showModal, setShowModal] = useState(false);
+
   const [payload, setPayload] = useState({});
   const [isloading, setIsLoading] = useState(false);
   const [isTextloading, setIsTextLoading] = useState(false);
@@ -42,11 +43,11 @@ export const GroupA = () => {
       }
     };
     handleEletion();
-  }, [1]);
+  }, []);
 
   const newArray = [];
   newArray.push(election);
-  const electionData: any = newArray[0];
+  const electionData = newArray[0];
   const electionId = electionData?.[0]?._id;
   const group = electionData?.[0]?.groups[0];
   const groupId = electionData?.[0]?.groups[0]?._id;
@@ -54,10 +55,6 @@ export const GroupA = () => {
   const candidates = group?.candidates;
   const candidateId =
     candidates && candidates.length > 0 ? candidates[0]._id : " ";
-
-  candidates?.forEach((candidate: any) => {
-    console.log("Candidate:", candidate);
-  });
 
   const callSaveVoteApi = async (updatedPayload: any) => {
     setIsTextLoading(true);
@@ -112,7 +109,6 @@ export const GroupA = () => {
           return updatedPayload;
         });
 
-        console.log(voted);
       }
     } catch (error) {
       error;
@@ -153,7 +149,6 @@ export const GroupA = () => {
                 >
                   <div>
                     <img
-                      // src="/asset/Images/vecimg.png"
                       src={candidate.image}
                       alt={candidate.name}
                       className="xl:w-[21vw] w-[30vw] object-cover h-[25vw] rounded-[3vw] xl:h-[21vw] xl:rounded-[0.8vw]"

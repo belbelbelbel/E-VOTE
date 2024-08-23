@@ -52,10 +52,6 @@ export const GroupC = () => {
   const candidateId =
     candidates && candidates.length > 0 ? candidates[0]._id : " ";
 
-  candidates?.forEach((candidate: any) => {
-    console.log("Candidate:", candidate);
-  });
-
   const callSaveVoteApi = async (updatedPayload: any) => {
     setIsTextLoading(true);
     try {
@@ -109,7 +105,6 @@ export const GroupC = () => {
           return updatedPayload;
         });
 
-        console.log(voted);
       }
     } catch (error) {
       error;

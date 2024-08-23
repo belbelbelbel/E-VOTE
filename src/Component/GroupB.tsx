@@ -110,7 +110,6 @@ export const GroupB = () => {
           return updatedPayload;
         });
 
-        console.log(voted);
       }
     } catch (error) {
       error;
