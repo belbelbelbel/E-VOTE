@@ -73,7 +73,7 @@ export const ElectionResults = () => {
         <div className="w-full  mb-3">
           {
             isloading ? (
-              <span>Loading results..</span>
+              <span>Loading results...</span>
             ) : (
               <div>
                 <h3 className=" font-semibold text-white xl:text-[1vw]  md:text-[2.3vw]     bg-blue-600 py-1 rounded-t-md">
@@ -122,7 +122,7 @@ export const ElectionResults = () => {
         <div className="w-full  mb-3">
           {
             isloading ? (
-              <span>Loading results..</span>
+              <span>Loading results...</span>
             ) : (
               <div>
                 <h3 className=" font-semibold text-white xl:text-[1vw] md:text-[2.3vw]     bg-green-600 py-1 rounded-t-md">
@@ -172,7 +172,7 @@ export const ElectionResults = () => {
         <div className="w-full  mb-3">
           {
             isloading ? (
-              <span>Loading results..</span>
+              <span>Loading results...</span>
             ) : (
               <div>
                 <h3 className=" font-semibold text-white xl:text-[1vw] md:text-[2.3vw]   bg-red-600 py-1 rounded-t-md">
@@ -218,7 +218,7 @@ export const ElectionResults = () => {
 
             <button
               onClick={handleLogout}
-              className="bg-gray-800  text-white xl:px-6 px-20 xl:py-2 py-2 md:py-5 md:text-xl rounded hover:bg-gray-700 transition-colors"
+              className="bg-gray-800  text-white xl:px-10 px-20 xl:py-1  py-2 md:py-5 md:text-xl rounded hover:bg-gray-700 transition-colors"
             >
               Log Out
             </button>
