@@ -53,6 +53,7 @@ export const GroupA = () => {
     const group = electionData?.[0]?.groups[0];
     const groupId = electionData?.[0]?.groups[0]?._id;
     console.log(groupId);
+    localStorage.setItem('electionId',electionId)
 
     const candidates = group?.candidates;
     const candidateId =

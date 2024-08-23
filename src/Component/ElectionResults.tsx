@@ -1,5 +1,31 @@
+import { useEffect, useState } from "react";
 export const ElectionResults = () => {
-// console.log("##########$%%^&*&",results);
+  const [isloading,setIsLoading] = useState(false)
+  const [electionResult, setElectionResult] = useState<any>([]);
+  const token = localStorage.getItem("token");
+  const [election, setElection] = useState<any>([]);
+  useEffect(() => {
+      const handleEletion = async () => {
+          setIsLoading(true)
+          try {
+              const res = await fetch(`https://foursquarevgc-election-api.onrender.com/elections`, {
+                  method: 'GET',
+                  headers: {
+                      'Content-Type': 'application/json',
+                      'authorization': `Bearer ${token}`
+                  }
+              })
+              const result = await res.json();
+              setElection(result);
+          } catch (error) {
+              console.log(error)
+          }
+          finally {
+              setIsLoading(false)
+          }
+      }
+      handleEletion();
+  }, [1])
   const handleLogout = () => {
     localStorage.removeItem("username");
     localStorage.removeItem("GroupAId");
@@ -8,6 +34,29 @@ export const ElectionResults = () => {
     localStorage.removeItem("token")
     window.location.href = "/";
 }
+const electionId  = election[0]?._id
+useEffect(() => {
+  const handleEletion = async () => {
+    setIsLoading(true);
+    try {
+      const res = await fetch(`https://foursquarevgc-election-api.onrender.com/election-records/results/${electionId}`,{
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'authorization': `Bearer ${token}`,
+        },
+      });
+      const result = await res.json();
+      setElectionResult(result);
+      console.log(result);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+  handleEletion();
+}, [1]);
 
 const electionData = {
   categoryOne: [
@@ -36,14 +85,14 @@ const electionData = {
 
         {/* Category One */}
         <div className="w-full  mb-3">
-          <h3 className="text-xl font-semibold text-white text-[1vw]  bg-blue-600 py-1rounded-t-md">
+          <h3 className=" font-semibold text-white xl:text-[1vw]   bg-blue-600 py-1 rounded-t-md">
             Category One Results
           </h3>
           <table className="w-full border border-gray-200">
             <thead>
               <tr className="bg-blue-100">
-                <th className="py-1 px-4 text-[1vw] border-b">Candidate Name</th>
-                <th className="py-1 px-4 text-[1vw] border-b">Number of Votes</th>
+                <th className="py-1 px-4 xl:text-[1vw] text-[3vw] border-b">Candidate Name</th>
+                <th className="py-1 px-4 xl:text-[1vw] text-[3vw] border-b">Number of Votes</th>
               </tr>
             </thead>
             <tbody>
@@ -52,8 +101,8 @@ const electionData = {
                   key={index}
                   className="text-gray-700 hover:bg-blue-50 transition-colors"
                 >
-                  <td className="py-1 px-4 border-b text-[1vw]">{candidate.name}</td>
-                  <td className="py-1 px-4 border-b text-[1vw]">{candidate.votes}</td>
+                  <td className="py-1 px-4 border-b text-[3vw] xl:text-[1vw]">{candidate.name}</td>
+                  <td className="py-1 px-4 border-b text-[3vw] xl:text-[1vw]">{candidate.votes}</td>
                 </tr>
               ))}
             </tbody>
@@ -65,14 +114,14 @@ const electionData = {
 
         {/* Category Two */}
         <div className="w-full mb-3">
-          <h3 className="text-xl font-semibold text-white text-[1vw]  bg-green-600 py-1rounded-t-md">
+          <h3 className=" font-semibold text-white xl:text-[1vw]  bg-green-600 py-1 rounded-t-md">
             Category Two Results
           </h3>
           <table className="w-full border border-gray-200">
             <thead>
               <tr className="bg-green-100">
-                <th className="py-1 text-[1vw] px-4 border-b">Candidate Name</th>
-                <th className="py-1 text-[1vw] px-4 border-b">Number of Votes</th>
+                <th className="py-1 xl:text-[1vw] text-[3vw] px-4 border-b">Candidate Name</th>
+                <th className="py-1 xl:text-[1vw] text-[3vw] px-4 border-b">Number of Votes</th>
               </tr>
             </thead>
             <tbody>
@@ -81,8 +130,8 @@ const electionData = {
                   key={index}
                   className="text-gray-700 hover:bg-green-50 transition-colors"
                 >
-                  <td className="py-1 px-4 text-[1vw] border-b">{candidate.name}</td>
-                  <td className="py-1 px-4 text-[1vw] border-b">{candidate.votes}</td>
+                  <td className="py-1 px-4 xl:text-[1vw] text-[3vw] border-b">{candidate.name}</td>
+                  <td className="py-1 px-4 xl:text-[1vw] text-[3vw] border-b">{candidate.votes}</td>
                 </tr>
               ))}
             </tbody>
@@ -94,14 +143,14 @@ const electionData = {
 
         {/* Category Three */}
         <div className="w-full mb-3">
-          <h3 className="text-xl font-semibold text-white text-[1vw]  bg-red-600 py-1rounded-t-md">
+          <h3 className=" font-semibold text-white xl:text-[1vw]    bg-red-600 py-1 rounded-t-md">
             Category Three Results
           </h3>
           <table className="w-full border border-gray-200">
             <thead>
               <tr className="bg-red-100">
-                <th className="py-1 text-[1vw] px-4 border-b">Candidate Name</th>
-                <th className="py-1 text-[1vw] px-4 border-b">Number of Votes</th>
+                <th className="py-1 xl:text-[1vw] text-[3vw] px-4 border-b">Candidate Name</th>
+                <th className="py-1 xl:text-[1vw] text-[3vw] px-4 border-b">Number of Votes</th>
               </tr>
             </thead>
             <tbody>
@@ -110,8 +159,8 @@ const electionData = {
                   key={index}
                   className="text-gray-700 hover:bg-red-50 transition-colors"
                 >
-                  <td className="py-1 text-[1vw] px-4 border-b">{candidate.name}</td>
-                  <td className="py-1 text-[1vw] px-4 border-b">{candidate.votes}</td>
+                  <td className="py-1 xl:text-[1vw] text-[3vw] px-4 border-b">{candidate.name}</td>
+                  <td className="py-1 xl:text-[1vw] text-[3vw] px-4 border-b">{candidate.votes}</td>
                 </tr>
               ))}
             </tbody>
