@@ -116,7 +116,7 @@ export const VotersContainer = () => {
         const startTime = new Date(start_time)
         const stopTime = new Date(stop_time);
 
-        if (now < startTime) {
+        if (now ===startTime) {
             setShowElectionHold(true);
             setShowElectionResult(false);
         } else if (now >= stopTime) {
