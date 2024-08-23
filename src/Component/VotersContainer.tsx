@@ -76,15 +76,16 @@ export const VotersContainer = () => {
     const stop_time = election[0]?.stop_time
     console.log(new Date(start_time))
     console.log(new Date(stop_time))
+
     useEffect(() => {
         const now = new Date();
         const startTime = new Date(start_time);
         const stopTime = new Date(stop_time);
     
-        if (now > startTime) {
-          setShowElectionHold(true);
+        if (now === startTime) {
+          setShowElectionHold(false);
           setShowElectionResult(false);
-        } else if (now <= stopTime) {
+        } else if (now === stopTime) {
           setShowElectionResult(true);
           setShowElectionHold(false);
         } else {
@@ -129,7 +130,7 @@ export const VotersContainer = () => {
             {/* Mobile Layout */}
             <div className='h-full w-full  xl:hidden'>
                 {!isGroupRoute && (
-                    <div className='flex md:pt-[4.5rem] nesthub-full pt-[3rem] relative  md:gap-[3rem] gap-[2rem] flex-col'>
+                    <div className='flex md:pt-[4.5rem]  nesthub-full pt-[3rem] relative  md:gap-[3rem] gap-[2rem] flex-col'>
                         <div className='flex items-center h-full justify-center nexthub_1 md:gap-[7vw] gap-[15vw] flex-col'>
                             <div>
                                 <img
@@ -158,7 +159,7 @@ export const VotersContainer = () => {
                             </div>
                         </div>
                         <div className='items-center justify-center flex'>
-                            <div className='bg-[#F94040] cursor-pointer rounded-[6px] group_buttonlogout absolute bottom-8 text-white md:h-[7.6vh] h-[6vh] text-[4.1vw] rounded-[10px] items-center justify-center flex w-[50%] mx-auto'>
+                            <div className='bg-[#F94040] cursor-pointer rounded-[6px] group_buttonlogout absolute -bottom-20  relative text-white md:h-[7.6vh] h-[6vh] text-[4.1vw] rounded-[10px] items-center justify-center flex w-[50%] mx-auto'>
                                 <button onClick={handleLogout}>Log Out</button>
                             </div>
                         </div>
