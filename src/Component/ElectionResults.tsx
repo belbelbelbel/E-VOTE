@@ -1,30 +1,30 @@
 import { useEffect, useState } from "react";
 export const ElectionResults = () => {
-  const [isloading,setIsLoading] = useState(false)
+  const [isloading, setIsLoading] = useState(false)
   const [electionResult, setElectionResult] = useState<any>([]);
   console.log(electionResult)
   console.log(isloading)
   const token = localStorage.getItem("token");
   const [election, setElection] = useState<any>([]);
   useEffect(() => {
-      const handleEletions = async () => {
-   
-          try {
-              const res = await fetch(`https://foursquarevgc-election-api.onrender.com/elections`, {
-                  method: 'GET',
-                  headers: {
-                      'Content-Type': 'application/json',
-                      'authorization': `Bearer ${token}`
-                  }
-              })
-              const result = await res.json();
-              setElection(result);
-          } catch (error) {
-              console.log(error)
+    const handleEletions = async () => {
+
+      try {
+        const res = await fetch(`https://foursquarevgc-election-api.onrender.com/elections`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'authorization': `Bearer ${token}`
           }
-        
+        })
+        const result = await res.json();
+        setElection(result);
+      } catch (error) {
+        console.log(error)
       }
-      handleEletions();
+
+    }
+    handleEletions();
   },)
   const handleLogout = () => {
     localStorage.removeItem("username");
@@ -33,33 +33,33 @@ export const ElectionResults = () => {
     localStorage.removeItem("GroupCId");
     localStorage.removeItem("token");
     window.location.href = "/";
-}
-const electionId  = election[0]?._id
-console.log(electionId)
-useEffect(() => {
-  const handleEletion = async () => {
-   setIsLoading(true)
-    try {
-      const res = await fetch(`https://foursquarevgc-election-api.onrender.com/election-records/results/${electionId}`,{
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-          'authorization': `Bearer ${token}`,
-        },
-      });
-      const result = await res.json();
-      setElectionResult(result);
-      console.log(result);
-    } catch (error) {
-      console.log(error);
-    }
-    finally{
-      setIsLoading(false)
-    }
-   
-  };
-  handleEletion();
-},[electionId]);
+  }
+  const electionId = election[0]?._id
+  console.log(electionId)
+  useEffect(() => {
+    const handleEletion = async () => {
+      setIsLoading(true)
+      try {
+        const res = await fetch(`https://foursquarevgc-election-api.onrender.com/election-records/results/${electionId}`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'authorization': `Bearer ${token}`,
+          },
+        });
+        const result = await res.json();
+        setElectionResult(result);
+        console.log(result);
+      } catch (error) {
+        console.log(error);
+      }
+      finally {
+        setIsLoading(false)
+      }
+
+    };
+    handleEletion();
+  }, [electionId]);
 
   // const electionData = {
   //   categoryOne: [
@@ -88,130 +88,159 @@ useEffect(() => {
 
         {/* Category One */}
         <div className="w-full  mb-3">
-          <h3 className=" font-semibold text-white xl:text-[1vw]   bg-blue-600 py-1 rounded-t-md">
-            Category One Results
-          </h3>
-          <table className="w-full border border-gray-200">
-            <thead>
-              <tr className="bg-blue-100">
-                <th className="py-1 px-4 xl:text-[1vw] text-[3vw] border-b">Candidate Name</th>
-                <th className="py-1 px-4 xl:text-[1vw] text-[3vw] border-b">Number of Votes</th>
-              </tr>
-            </thead>
-            <tbody>
-              {electionResult[0]?.candidates.map((candidate: any, index: any) => (
-                <tr
-                  key={index}
-                  className="text-gray-700 hover:bg-blue-50 transition-colors"
-                >
-                  <td className="py-1 px-4 border-b text-[2.7vw] xl:text-[1vw]">
-                    {
-                      !isloading ? (
-                        candidate.name
-                      ) : (<span>fetching result...</span>)
-                    }
-                  </td>
-                  <td className="py-1 px-4 border-b text-[3vw] xl:text-[1vw]">
-                  {
-                      !isloading ? (
-                        candidate.votes
-                      ) : (<span>fetching result...</span>)
-                    }
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+          {
+            isloading ? (
+              <span>Loading results..</span>
+            ) : (
+              <div>
+                <h3 className=" font-semibold text-white xl:text-[1vw]   bg-blue-600 py-1 rounded-t-md">
+                  Category One Results
+                </h3>
+                <table className="w-full border border-gray-200">
+                  <thead>
+                    <tr className="bg-blue-100">
+                      <th className="py-1 px-4 xl:text-[1vw] text-[3vw] border-b">Candidate Name</th>
+                      <th className="py-1 px-4 xl:text-[1vw] text-[3vw] border-b">Number of Votes</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {electionResult[0]?.candidates.map((candidate: any, index: any) => (
+                      <tr
+                        key={index}
+                        className="text-gray-700 hover:bg-blue-50 transition-colors"
+                      >
+                        <td className="py-1 px-4 border-b text-[2.7vw] xl:text-[1vw]">
+                          {
+                            !isloading ? (
+                              candidate.name
+                            ) : (<span>fetching result...</span>)
+                          }
+                        </td>
+                        <td className="py-1 px-4 border-b text-[3vw] xl:text-[1vw]">
+                          {
+                            !isloading ? (
+                              candidate.votes
+                            ) : (<span>fetching result...</span>)
+                          }
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )
+          }
         </div>
 
         {/* Divider Line */}
         <hr className="w-full border-gray-300 mb-6" />
 
         {/* Category Two */}
-        <div className="w-full mb-3">
-          <h3 className=" font-semibold text-white xl:text-[1vw]  bg-green-600 py-1 rounded-t-md">
-            Category Two Results
-          </h3>
-          <table className="w-full border border-gray-200">
-            <thead>
-              <tr className="bg-green-100">
-                <th className="py-1 xl:text-[1vw] text-[3vw] px-4 border-b">Candidate Name</th>
-                <th className="py-1 xl:text-[1vw] text-[3vw] px-4 border-b">Number of Votes</th>
-              </tr>
-            </thead>
-            <tbody>
-              {electionResult[1]?.candidates.map((candidate: any, index: any) => (
-                <tr
-                  key={index}
-                  className="text-gray-700 hover:bg-green-50 transition-colors"
-                >
-                  <td className="py-1 px-4 xl:text-[1vw] text-[3vw] border-b">
-                  {
-                      !isloading ? (
-                        candidate.name
-                      ) : (<span>fetching result..</span>)
-                    }
-                  </td>
-                  <td className="py-1 px-4 xl:text-[1vw] text-[3vw] border-b">
-                      {
-                      !isloading ? (
-                        candidate.votes
-                      ) : (<span>fetching result...</span>)
-                    }
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+        <div className="w-full  mb-3">
+          {
+            isloading ? (
+              <span>Loading results..</span>
+            ) : (
+              <div>
+                <h3 className=" font-semibold text-white xl:text-[1vw]   bg-green-600 py-1 rounded-t-md">
+                  Category Two Results
+                </h3>
+                <table className="w-full border border-gray-200">
+                  <thead>
+                    <tr className="bg-green-100">
+                      <th className="py-1 px-4 xl:text-[1vw] text-[3vw] border-b">Candidate Name</th>
+                      <th className="py-1 px-4 xl:text-[1vw] text-[3vw] border-b">Number of Votes</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {electionResult[1]?.candidates.map((candidate: any, index: any) => (
+                      <tr
+                        key={index}
+                        className="text-gray-700 hover:bg-green-50 transition-colors"
+                      >
+                        <td className="py-1 px-4 border-b text-[2.7vw] xl:text-[1vw]">
+                          {
+                            !isloading ? (
+                              candidate.name
+                            ) : (<span>fetching result...</span>)
+                          }
+                        </td>
+                        <td className="py-1 px-4 border-b text-[3vw] xl:text-[1vw]">
+                          {
+                            !isloading ? (
+                              candidate.votes
+                            ) : (<span>fetching result...</span>)
+                          }
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )
+          }
         </div>
+
 
         {/* Divider Line */}
         <hr className="w-full border-gray-300 mb-6" />
 
         {/* Category Three */}
-        <div className="w-full mb-3">
-          <h3 className=" font-semibold text-white xl:text-[1vw]    bg-red-600 py-1 rounded-t-md">
-            Category Three Results
-          </h3>
-          <table className="w-full border border-gray-200">
-            <thead>
-              <tr className="bg-red-100">
-                <th className="py-1 xl:text-[1vw] text-[3vw] px-4 border-b">Candidate Name</th>
-                <th className="py-1 xl:text-[1vw] text-[3vw] px-4 border-b">Number of Votes</th>
-              </tr>
-            </thead>
-            <tbody>
-              {electionResult[2]?.candidates.map((candidate:any, index:any) => (
-                <tr
-                  key={index}
-                  className="text-gray-700 hover:bg-red-50 transition-colors"
-                >
-                  <td className="py-1 xl:text-[1vw] text-[3vw] px-4 border-b">
-                  {
-                      !isloading ? (
-                        candidate.name
-                      ) : (<span>fetching result..</span>)
-                    }
-                  </td>
-                  <td className="py-1 xl:text-[1vw] text-[3vw] px-4 border-b">
-                  {
-                      !isloading ? (
-                        candidate.votes
-                      ) : (<span>fetching result..</span>)
-                    }
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+        <div className="w-full  mb-3">
+          {
+            isloading ? (
+              <span>Loading results..</span>
+            ) : (
+              <div>
+                <h3 className=" font-semibold text-white xl:text-[1vw]   bg-red-600 py-1 rounded-t-md">
+                  Category Three Results
+                </h3>
+                <table className="w-full border border-gray-200">
+                  <thead>
+                    <tr className="bg-red-100">
+                      <th className="py-1 px-4 xl:text-[1vw] text-[3vw] border-b">Candidate Name</th>
+                      <th className="py-1 px-4 xl:text-[1vw] text-[3vw] border-b">Number of Votes</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {electionResult[2]?.candidates.map((candidate: any, index: any) => (
+                      <tr
+                        key={index}
+                        className="text-gray-700 hover:bg-red-50 transition-colors"
+                      >
+                        <td className="py-1 px-4 border-b text-[2.7vw] xl:text-[1vw]">
+                          {
+                            !isloading ? (
+                              candidate.name
+                            ) : (<span>fetching result...</span>)
+                          }
+                        </td>
+                        <td className="py-1 px-4 border-b text-[3vw] xl:text-[1vw]">
+                          {
+                            !isloading ? (
+                              candidate.votes
+                            ) : (<span>fetching result...</span>)
+                          }
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )
+          }
         </div>
+        {
+          !isloading && (
 
-        <button
-          onClick={handleLogout}
-          className="bg-gray-800 text-white px-6 py-2 rounded hover:bg-gray-700 transition-colors"
-        >
-          Log Out
-        </button>
+            <button
+              onClick={handleLogout}
+              className="bg-gray-800 text-white px-6 py-2 rounded hover:bg-gray-700 transition-colors"
+            >
+              Log Out
+            </button>
+          )
+        }
       </div>
     </div>
   );
