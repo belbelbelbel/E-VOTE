@@ -2,9 +2,9 @@ import { ImArrowLeft2 } from "react-icons/im";
 import { Link} from 'react-router-dom';
 
 export const Greeting = () => {
-    const capitalizeFirstLetter = (string:any) => {
-        return string.charAt(0).toUpperCase() + string.slice(1);
-    };
+    // const capitalizeFirstLetter = (string:any) => {
+    //     return string.charAt(0).toUpperCase() + string.slice(1);
+    // };
     var name =  localStorage.getItem('username')
     const username = name;
 
