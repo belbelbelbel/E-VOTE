@@ -103,7 +103,7 @@ export const VotersContainer = () => {
     const isGroupRoute = ["/votes/GroupA", "/votes/GroupB", "/votes/GroupC"].includes(location.pathname);
 
     return (
-        <div className='w-screen h-screen relative z-40 h-[100dvh]'>
+        <div className='w-screen h-[100dvh] relative z-40 h-[100dvh]'>
             {
                 showElectionHold && (
                     <ElectionOnHold start_time={start_time} stop_time={stop_time} />
