@@ -40,7 +40,7 @@ export const ElectionOnHold = ({ start_time, stop_time }: iTimeProps) => {
         </div>
         <h1 className="text-gray-700 mb-6"></h1>
         <button
-          className=" text-blue-800 fonts-mid px-8 py-2 w-[70%] md:h-[7vh] text-[6vw] absolute xl:left-0  bottom-5 xl:text-[2vw] xl:w-[40%] rounded "
+          className=" text-blue-800 fonts-mid px-8 py-2 w-[70%] md:h-[7vh] text-[6vw] absolute xl:left-0  bottom-3 xl:text-[2vw] xl:w-[40%] rounded "
           onClick={handleLogout}
         >
           Log Out
