@@ -61,23 +61,6 @@ export const ElectionResults = () => {
     handleEletion();
   }, [electionId]);
 
-  // const electionData = {
-  //   categoryOne: [
-  //     { name: "Candidate One", votes: "N/A" },
-  //     { name: "Candidate Two", votes: "N/A" },
-  //     { name: "Candidate Three", votes: "N/A" },
-  //   ],
-  //   categoryTwo: [
-  //     { name: "Candidate One", votes: "N/A" },
-  //     { name: "Candidate Two", votes: "N/A" },
-  //     { name: "Candidate Three", votes: "N/A" },
-  //   ],
-  //   categoryThree: [
-  //     { name: "Candidate One", votes: "N/A" },
-  //     { name: "Candidate Two", votes: "N/A" },
-  //     { name: "Candidate Three", votes: "N/A" },
-  //   ],
-  // };
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
@@ -93,7 +76,7 @@ export const ElectionResults = () => {
               <span>Loading results..</span>
             ) : (
               <div>
-                <h3 className=" font-semibold text-white xl:text-[1vw]   bg-blue-600 py-1 rounded-t-md">
+                <h3 className=" font-semibold text-white xl:text-[1vw]  md:text-[2.3vw]     bg-blue-600 py-1 rounded-t-md">
                   Category One Results
                 </h3>
                 <table className="w-full border border-gray-200">
@@ -142,7 +125,7 @@ export const ElectionResults = () => {
               <span>Loading results..</span>
             ) : (
               <div>
-                <h3 className=" font-semibold text-white xl:text-[1vw]   bg-green-600 py-1 rounded-t-md">
+                <h3 className=" font-semibold text-white xl:text-[1vw] md:text-[2.3vw]     bg-green-600 py-1 rounded-t-md">
                   Category Two Results
                 </h3>
                 <table className="w-full border border-gray-200">
@@ -192,7 +175,7 @@ export const ElectionResults = () => {
               <span>Loading results..</span>
             ) : (
               <div>
-                <h3 className=" font-semibold text-white xl:text-[1vw]   bg-red-600 py-1 rounded-t-md">
+                <h3 className=" font-semibold text-white xl:text-[1vw] md:text-[2.3vw]   bg-red-600 py-1 rounded-t-md">
                   Category Three Results
                 </h3>
                 <table className="w-full border border-gray-200">
@@ -235,7 +218,7 @@ export const ElectionResults = () => {
 
             <button
               onClick={handleLogout}
-              className="bg-gray-800  text-white xl:px-6 px-20 xl:py-2 py-5 md:text-xl rounded hover:bg-gray-700 transition-colors"
+              className="bg-gray-800  text-white xl:px-6 px-20 xl:py-2 py-2 md:py-5 md:text-xl rounded hover:bg-gray-700 transition-colors"
             >
               Log Out
             </button>

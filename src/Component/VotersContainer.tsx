@@ -102,15 +102,18 @@ export const VotersContainer = () => {
     console.log("the election is", election)
     console.log("the election is", election)
     // const start_time = `2024-08-22T22:00:00.000Z`
-    const start_time = election[0]?.start_time
-    console.log('start time is here', start_time)
-    const stop_time = election[0]?.stop_time
+    // const start_time = election[0]?.start_time 
+    // console.log('start time is here', start_time)
+    // const stop_time = election[0]?.stop_time
+    const start_time = election[0]?.start_time || new Date().toISOString();
+    const stop_time = election[0]?.stop_time || new Date().toISOString();
+    console.log(stop_time)
     console.log(new Date(start_time))
     console.log(new Date(stop_time))
 
     useEffect(() => {
         const now = new Date();
-        const startTime = new Date(start_time);
+        const startTime = new Date(start_time)
         const stopTime = new Date(stop_time);
 
         if (now < startTime) {
