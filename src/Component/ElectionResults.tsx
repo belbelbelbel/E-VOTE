@@ -1,31 +1,31 @@
 export const ElectionResults = () => {
-// console.log("##########$%%^&*&",results);
+  // console.log("##########$%%^&*&",results);
   const handleLogout = () => {
     localStorage.removeItem("username");
     localStorage.removeItem("GroupAId");
     localStorage.removeItem("GroupBId");
     localStorage.removeItem("GroupCId");
-    localStorage.removeItem("token")
+    localStorage.removeItem("token");
     window.location.href = "/";
-}
+  };
 
-const electionData = {
-  categoryOne: [
-      { name: "Candidate One", votes: 'N/A' },
-      { name: "Candidate Two", votes: 'N/A' },
-      { name: "Candidate Three", votes: 'N/A' },
-  ],
-  categoryTwo: [
-    { name: "Candidate One", votes: 'N/A' },
-    { name: "Candidate Two", votes: 'N/A' },
-    { name: "Candidate Three", votes: 'N/A' },
-  ],
-  categoryThree: [
-    { name: "Candidate One", votes: 'N/A' },
-    { name: "Candidate Two", votes: 'N/A' },
-    { name: "Candidate Three", votes: 'N/A' },
-  ],
-};
+  const electionData = {
+    categoryOne: [
+      { name: "Candidate One", votes: "N/A" },
+      { name: "Candidate Two", votes: "N/A" },
+      { name: "Candidate Three", votes: "N/A" },
+    ],
+    categoryTwo: [
+      { name: "Candidate One", votes: "N/A" },
+      { name: "Candidate Two", votes: "N/A" },
+      { name: "Candidate Three", votes: "N/A" },
+    ],
+    categoryThree: [
+      { name: "Candidate One", votes: "N/A" },
+      { name: "Candidate Two", votes: "N/A" },
+      { name: "Candidate Three", votes: "N/A" },
+    ],
+  };
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
@@ -42,18 +42,26 @@ const electionData = {
           <table className="w-full border border-gray-200">
             <thead>
               <tr className="bg-blue-100">
-                <th className="py-1 px-4 text-[1vw] border-b">Candidate Name</th>
-                <th className="py-1 px-4 text-[1vw] border-b">Number of Votes</th>
+                <th className="py-1 px-4 text-[1vw] border-b">
+                  Candidate Name
+                </th>
+                <th className="py-1 px-4 text-[1vw] border-b">
+                  Number of Votes
+                </th>
               </tr>
             </thead>
             <tbody>
-              {electionData?.categoryOne?.map((candidate:any, index:any) => (
+              {electionData?.categoryOne?.map((candidate: any, index: any) => (
                 <tr
                   key={index}
                   className="text-gray-700 hover:bg-blue-50 transition-colors"
                 >
-                  <td className="py-1 px-4 border-b text-[1vw]">{candidate.name}</td>
-                  <td className="py-1 px-4 border-b text-[1vw]">{candidate.votes}</td>
+                  <td className="py-1 px-4 border-b text-[1vw]">
+                    {candidate.name}
+                  </td>
+                  <td className="py-1 px-4 border-b text-[1vw]">
+                    {candidate.votes}
+                  </td>
                 </tr>
               ))}
             </tbody>
@@ -71,18 +79,26 @@ const electionData = {
           <table className="w-full border border-gray-200">
             <thead>
               <tr className="bg-green-100">
-                <th className="py-1 text-[1vw] px-4 border-b">Candidate Name</th>
-                <th className="py-1 text-[1vw] px-4 border-b">Number of Votes</th>
+                <th className="py-1 text-[1vw] px-4 border-b">
+                  Candidate Name
+                </th>
+                <th className="py-1 text-[1vw] px-4 border-b">
+                  Number of Votes
+                </th>
               </tr>
             </thead>
             <tbody>
-              {electionData?.categoryTwo?.map((candidate:any, index:any) => (
+              {electionData?.categoryTwo?.map((candidate: any, index: any) => (
                 <tr
                   key={index}
                   className="text-gray-700 hover:bg-green-50 transition-colors"
                 >
-                  <td className="py-1 px-4 text-[1vw] border-b">{candidate.name}</td>
-                  <td className="py-1 px-4 text-[1vw] border-b">{candidate.votes}</td>
+                  <td className="py-1 px-4 text-[1vw] border-b">
+                    {candidate.name}
+                  </td>
+                  <td className="py-1 px-4 text-[1vw] border-b">
+                    {candidate.votes}
+                  </td>
                 </tr>
               ))}
             </tbody>
@@ -100,20 +116,30 @@ const electionData = {
           <table className="w-full border border-gray-200">
             <thead>
               <tr className="bg-red-100">
-                <th className="py-1 text-[1vw] px-4 border-b">Candidate Name</th>
-                <th className="py-1 text-[1vw] px-4 border-b">Number of Votes</th>
+                <th className="py-1 text-[1vw] px-4 border-b">
+                  Candidate Name
+                </th>
+                <th className="py-1 text-[1vw] px-4 border-b">
+                  Number of Votes
+                </th>
               </tr>
             </thead>
             <tbody>
-              {electionData?.categoryThree?.map((candidate:any, index:any) => (
-                <tr
-                  key={index}
-                  className="text-gray-700 hover:bg-red-50 transition-colors"
-                >
-                  <td className="py-1 text-[1vw] px-4 border-b">{candidate.name}</td>
-                  <td className="py-1 text-[1vw] px-4 border-b">{candidate.votes}</td>
-                </tr>
-              ))}
+              {electionData?.categoryThree?.map(
+                (candidate: any, index: any) => (
+                  <tr
+                    key={index}
+                    className="text-gray-700 hover:bg-red-50 transition-colors"
+                  >
+                    <td className="py-1 text-[1vw] px-4 border-b">
+                      {candidate.name}
+                    </td>
+                    <td className="py-1 text-[1vw] px-4 border-b">
+                      {candidate.votes}
+                    </td>
+                  </tr>
+                )
+              )}
             </tbody>
           </table>
         </div>
