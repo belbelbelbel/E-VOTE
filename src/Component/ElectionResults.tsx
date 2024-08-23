@@ -1,5 +1,4 @@
 export const ElectionResults = () => {
-  // console.log("##########$%%^&*&",results);
   const handleLogout = () => {
     localStorage.removeItem("username");
     localStorage.removeItem("GroupAId");
