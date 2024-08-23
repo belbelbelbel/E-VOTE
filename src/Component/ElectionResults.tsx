@@ -82,7 +82,7 @@ export const ElectionResults = () => {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
       <div className="bg-white p-8 rounded-lg shadow-md flex flex-col mx-auto justify-center items-center h-[95%] w-[90%] xl:w-[60%] text-center">
-        <h2 className="xl:text-2xl text:xl font-bold text-gray-800 mb-6">
+        <h2 className="xl:text-2xl md:text-[4vw]  text:xl font-bold text-gray-800 mb-6">
           Election Results
         </h2>
 
@@ -235,7 +235,7 @@ export const ElectionResults = () => {
 
             <button
               onClick={handleLogout}
-              className="bg-gray-800 text-white px-6 py-2 rounded hover:bg-gray-700 transition-colors"
+              className="bg-gray-800  text-white xl:px-6 px-20 xl:py-2 py-5 md:text-xl rounded hover:bg-gray-700 transition-colors"
             >
               Log Out
             </button>

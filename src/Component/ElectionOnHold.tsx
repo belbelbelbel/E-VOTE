@@ -1,4 +1,3 @@
-import CountdownTimer from "./utils/CountDownTimer";
 import { getDateTime } from "./utils/GetTimeAndDate";
 interface iTimeProps {
   start_time: any;
