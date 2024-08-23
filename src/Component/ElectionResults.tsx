@@ -27,16 +27,24 @@ export const ElectionResults = () => {
     };
     handleEletions();
   });
+  
   const handleLogout = () => {
-    localStorage.removeItem("username");
-    localStorage.removeItem("GroupAId");
-    localStorage.removeItem("GroupBId");
-    localStorage.removeItem("GroupCId");
-    localStorage.removeItem("token");
+    const keysToRemove = [
+      "username",
+      "GroupAId",
+      "GroupBId",
+      "GroupCId",
+      "token",
+    ];
+
+    keysToRemove.forEach((key) => localStorage.removeItem(key));
+
     window.location.href = "/";
   };
+
   const electionId = election[0]?._id;
   console.log(electionId);
+
   useEffect(() => {
     const handleEletion = async () => {
       setIsLoading(true);
