@@ -61,23 +61,23 @@ useEffect(() => {
   handleEletion();
 }, []);
 
-  const electionData = {
-    categoryOne: [
-      { name: "Candidate One", votes: "N/A" },
-      { name: "Candidate Two", votes: "N/A" },
-      { name: "Candidate Three", votes: "N/A" },
-    ],
-    categoryTwo: [
-      { name: "Candidate One", votes: "N/A" },
-      { name: "Candidate Two", votes: "N/A" },
-      { name: "Candidate Three", votes: "N/A" },
-    ],
-    categoryThree: [
-      { name: "Candidate One", votes: "N/A" },
-      { name: "Candidate Two", votes: "N/A" },
-      { name: "Candidate Three", votes: "N/A" },
-    ],
-  };
+  // const electionData = {
+  //   categoryOne: [
+  //     { name: "Candidate One", votes: "N/A" },
+  //     { name: "Candidate Two", votes: "N/A" },
+  //     { name: "Candidate Three", votes: "N/A" },
+  //   ],
+  //   categoryTwo: [
+  //     { name: "Candidate One", votes: "N/A" },
+  //     { name: "Candidate Two", votes: "N/A" },
+  //     { name: "Candidate Three", votes: "N/A" },
+  //   ],
+  //   categoryThree: [
+  //     { name: "Candidate One", votes: "N/A" },
+  //     { name: "Candidate Two", votes: "N/A" },
+  //     { name: "Candidate Three", votes: "N/A" },
+  //   ],
+  // };
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
