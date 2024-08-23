@@ -6,61 +6,61 @@ import { MdOutlineHowToVote } from "react-icons/md";
 import { ChangeEvent, useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 
-
 export const Signin = () => {
-  const [isloading, setIsloading] = useState(false)
-  const navigate = useNavigate()
+  const [isloading, setIsloading] = useState(false);
+  const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
-  const [error, setError] = useState("")
+  const [error, setError] = useState("");
   const [formState, setFormState] = useState({
     username: "",
     password: "",
   });
   const isFormFilled = formState.username !== "" && formState.password !== "";
   useEffect(() => {
-    if(!isFormFilled) {
-      setError("")
+    if (!isFormFilled) {
+      setError("");
     }
-  })
+  });
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setIsloading(true)
+    setIsloading(true);
     try {
-      const res = await fetch("https://foursquarevgc-election-api.onrender.com/users/login", {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          username: formState.username,
-          access_pin: formState.password,
-        }),
-      })
+      const res = await fetch(
+        `${import.meta.env.VITE_API_ENDPOINT}/users/login`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            username: formState.username,
+            access_pin: formState.password,
+          }),
+        }
+      );
       const result = await res.json();
-      console.log(result)
-      console.log(result.token)
-      localStorage.setItem("token", result.token)
-      setError( result.username || result.access_pin)
+      console.log(result);
+      console.log(result.token);
+      localStorage.setItem("token", result.token);
+      setError(result.username || result.access_pin);
       if (!res.ok) {
         throw new Error("Failed to fetch");
-      }
-      else {
-        navigate("/votes")
+      } else {
+        navigate("/votes");
       }
     } catch (error) {
-      console.log("error")
+      console.log("error");
+    } finally {
+      setIsloading(false);
     }
-    finally {
-      setIsloading(false)
-    }
-  }
-  const [] = useState()
+  };
+  const [] = useState();
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormState({ ...formState, [name]: value });
   };
 
-  localStorage.setItem('username', formState.username)
+  localStorage.setItem("username", formState.username);
 
   return (
     <div className="text-black h-[100dvh]  w-screen py-[1rem] xl:py-0 xl:flex-row flex-col flex">
@@ -87,7 +87,10 @@ export const Signin = () => {
               className="xl:w-[14vw] w-[50vw] w-[44vw] absolute  weblogo-png -top-[37vw] md:-top-[15vw] xl:top-0 md:relative"
             />
           </div>
-          <form onSubmit={handleSubmit} className="flex flex-col  gap-[2vw] xl:gap-[1.1vw]">
+          <form
+            onSubmit={handleSubmit}
+            className="flex flex-col  gap-[2vw] xl:gap-[1.1vw]"
+          >
             <div className="">
               <div className="xl:text-[1vw] text-[3.8vw] md:text-[3.6vw] text-[#828282]">
                 Hello
@@ -125,7 +128,10 @@ export const Signin = () => {
                   placeholder="Pin"
                   className="bg-transparent uppercase w-[90%] outline-none border-none"
                 />
-                <div onClick={() => setShowPassword(!showPassword)} aria-label="Toggle password visibility ">
+                <div
+                  onClick={() => setShowPassword(!showPassword)}
+                  aria-label="Toggle password visibility "
+                >
                   {showPassword ? (
                     <IoIosEye className="text-black text-opacity-50  xl:text-[1.9vw] md:text-[4vw]  text-[7vw]" />
                   ) : (
@@ -133,25 +139,22 @@ export const Signin = () => {
                   )}
                 </div>
               </div>
-              {
-                !isloading && (
-                  <div className="relative flex fonts-mid items-center justify-center">
-                    <div className="text-[#FF0000] top-0  xl:-top-3  absolute xl:text-[1.3vw] login_error text-center w-[60%] mx-auto xl:text-[1.1vw] md:text-[3.2vw]">
-                      {error}
-                    </div>
+              {!isloading && (
+                <div className="relative flex fonts-mid items-center justify-center">
+                  <div className="text-[#FF0000] top-0  xl:-top-3  absolute xl:text-[1.3vw] login_error text-center w-[60%] mx-auto xl:text-[1.1vw] md:text-[3.2vw]">
+                    {error}
                   </div>
-                )
-              }
+                </div>
+              )}
               <div>
                 <button
                   type="submit"
-                  className={`bg-[#0250FC] md:text-[3.5vw] form_button rounded-[8px] xl:text-[1.1vw] text-white uppercase relative top-8 xl:top-0 rounded-[3px] md:rounded-[6px] tracking-[1px] font-medium h-[3.3rem] md:h-[11.3vw] xl:h-[3.4rem] w-full xl:py-[0.9vw] ${!isFormFilled && "bg-[#0250FC] bg-opacity-70"
-                    }`}
+                  className={`bg-[#0250FC] md:text-[3.5vw] form_button rounded-[8px] xl:text-[1.1vw] text-white uppercase relative top-8 xl:top-0 rounded-[3px] md:rounded-[6px] tracking-[1px] font-medium h-[3.3rem] md:h-[11.3vw] xl:h-[3.4rem] w-full xl:py-[0.9vw] ${
+                    !isFormFilled && "bg-[#0250FC] bg-opacity-70"
+                  }`}
                   disabled={!isFormFilled && isloading}
                 >
-                  {
-                    !isloading ? "Login" : " Please wait... "
-                  }
+                  {!isloading ? "Login" : " Please wait... "}
                 </button>
               </div>
             </div>
