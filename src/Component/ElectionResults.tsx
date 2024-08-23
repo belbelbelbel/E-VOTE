@@ -7,8 +7,8 @@ export const ElectionResults = () => {
   const token = localStorage.getItem("token");
   const [election, setElection] = useState<any>([]);
   useEffect(() => {
-      const handleEletion = async () => {
-          setIsLoading(true)
+      const handleEletions = async () => {
+   
           try {
               const res = await fetch(`https://foursquarevgc-election-api.onrender.com/elections`, {
                   method: 'GET',
@@ -22,12 +22,10 @@ export const ElectionResults = () => {
           } catch (error) {
               console.log(error)
           }
-          finally {
-              setIsLoading(false)
-          }
+        
       }
-      handleEletion();
-  },[])
+      handleEletions();
+  },)
   const handleLogout = () => {
     localStorage.removeItem("username");
     localStorage.removeItem("GroupAId");
@@ -40,7 +38,7 @@ const electionId  = election[0]?._id
 console.log(electionId)
 useEffect(() => {
   const handleEletion = async () => {
-    setIsLoading(true);
+   setIsLoading(true)
     try {
       const res = await fetch(`https://foursquarevgc-election-api.onrender.com/election-records/results/${electionId}`,{
         method: 'GET',
@@ -54,12 +52,14 @@ useEffect(() => {
       console.log(result);
     } catch (error) {
       console.log(error);
-    } finally {
-      setIsLoading(false);
     }
+    finally{
+      setIsLoading(false)
+    }
+   
   };
   handleEletion();
-},[]);
+},[electionId]);
 
   // const electionData = {
   //   categoryOne: [
