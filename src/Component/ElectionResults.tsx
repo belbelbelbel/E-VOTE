@@ -11,19 +11,19 @@ export const ElectionResults = () => {
 
 const electionData = {
   categoryOne: [
-      { name: "Alice Johnson", votes: 1200 },
-      { name: "Bob Smith", votes: 950 },
-      { name: "Bob Smith", votes: 950 },
+      { name: "Candidate One", votes: 'N/A' },
+      { name: "Candidate Two", votes: 'N/A' },
+      { name: "Candidate Three", votes: 'N/A' },
   ],
   categoryTwo: [
-      { name: "Carol Williams", votes: 800 },
-      { name: "David Brown", votes: 650 },
-      { name: "Carol Williams", votes: 800 },
+    { name: "Candidate One", votes: 'N/A' },
+    { name: "Candidate Two", votes: 'N/A' },
+    { name: "Candidate Three", votes: 'N/A' },
   ],
   categoryThree: [
-      { name: "Eve Davis", votes: 400 },
-      { name: "Frank Miller", votes: 350 },
-      { name: "Eve Davis", votes: 400 },
+    { name: "Candidate One", votes: 'N/A' },
+    { name: "Candidate Two", votes: 'N/A' },
+    { name: "Candidate Three", votes: 'N/A' },
   ],
 };
 
