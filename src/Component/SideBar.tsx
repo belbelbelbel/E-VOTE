@@ -9,13 +9,19 @@ export const SideBar = () => {
   };
 
   const handleLogout = () => {
-    localStorage.removeItem("username");
-    localStorage.removeItem("GroupAId");
-    localStorage.removeItem("GroupBId");
-    localStorage.removeItem("GroupCId");
-    localStorage.removeItem("token");
+    const keysToRemove = [
+      "username",
+      "GroupAId",
+      "GroupBId",
+      "GroupCId",
+      "token",
+    ];
+
+    keysToRemove.forEach((key) => localStorage.removeItem(key));
+
     window.location.href = "/";
   };
+
   return (
     <div className="flex flex-col h-full gap-[3vw] pt-[3vw]">
       <div className="flex flex-col h-full gap-[3vw] pt-[3vw]">

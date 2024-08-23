@@ -136,12 +136,13 @@ export const GroupA = () => {
             <div></div>
           </div>
         </div>
-        <div className="text-[#171717] fonts-mid tracking-[0.2px] xl:block hidden">
-        Below are the candidates for the “Council Member” Category A
+        <div className="text-[#171717] fonts-mid tracking-[0.2px] xl:block hidden text-[24px]">
+          Council Members
         </div>
-        <div className="xl:hidden my-[0vw] md:my-[0vw] text-[4.5vw] text-center tracking-[1px]">
-        Below are the candidates for the “Council Member” Category A
+        <div className="xl:hidden my-[0vw] md:my-[0vw] text-[6vw] text-center tracking-[1px]">
+          Council Members
         </div>
+
         <div className="flex xl:flex-row xl:px-0 px-0 md:px-0 flex-col xl:gap-[3vw] gap-[7vw] xl:items-center justify-center">
           {!isloading ? (
             <div className="flex xl:flex-row xl:px-0 px-10 md:px-20 flex-col xl:gap-[3vw] gap-[7vw] xl:items-center justify-center">
@@ -195,9 +196,8 @@ export const GroupA = () => {
         </div>
       </div>
       <div className="w-[80%]  mx-auto xl:mt-0 mb-0 md:mb-[4vw] my-[0vw]   xl:h-0 h-full flex items-center relative xl:-top-[1vw] justify-center">
-       {
-         !isloading && (
-            <button
+        {!isloading && (
+          <button
             className={`text-white  xl:w-[44%] w-full h-[6.5vh] md:h-[13.2vw] xl:text-[1.5vw] text-[4vw] mx-auto xl:h-[3.5vw] fonts-mid rounded-[6px] md:rounded-[10px] xl:rounded-[4px] mt-0 ${
               voted === null
                 ? "bg-black bg-opacity-50 cursor-not-allowed"
@@ -208,8 +208,7 @@ export const GroupA = () => {
           >
             {isTextloading ? "Saving..." : "Save vote"}
           </button>
-         )
-       }
+        )}
       </div>
       {showModal && (
         <div className="h-full w-full z-40 inset-0 bg-[#171717] opacity-90 absolute flex items-center justify-center">
