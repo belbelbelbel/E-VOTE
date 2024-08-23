@@ -59,7 +59,7 @@ useEffect(() => {
     }
   };
   handleEletion();
-}, [1]);
+}, []);
 
   const electionData = {
     categoryOne: [
@@ -99,7 +99,7 @@ useEffect(() => {
               </tr>
             </thead>
             <tbody>
-              {electionResult[0].candidates.map((candidate: any, index: any) => (
+              {electionResult[0]?.candidates.map((candidate: any, index: any) => (
                 <tr
                   key={index}
                   className="text-gray-700 hover:bg-blue-50 transition-colors"
@@ -128,7 +128,7 @@ useEffect(() => {
               </tr>
             </thead>
             <tbody>
-              {electionResult[1].candidates.map((candidate: any, index: any) => (
+              {electionResult[1]?.candidates.map((candidate: any, index: any) => (
                 <tr
                   key={index}
                   className="text-gray-700 hover:bg-green-50 transition-colors"
@@ -157,7 +157,7 @@ useEffect(() => {
               </tr>
             </thead>
             <tbody>
-              {electionResult[2].candidates.map((candidate:any, index:any) => (
+              {electionResult[2]?.candidates.map((candidate:any, index:any) => (
                 <tr
                   key={index}
                   className="text-gray-700 hover:bg-red-50 transition-colors"
