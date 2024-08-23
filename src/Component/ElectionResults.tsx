@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 export const ElectionResults = () => {
-  // const [isloading,setIsLoading] = useState(false)
+  const [isloading,setIsLoading] = useState(false)
   const [electionResult, setElectionResult] = useState<any>([]);
   console.log(electionResult)
-  // console.log(isloading)
+  console.log(isloading)
   const token = localStorage.getItem("token");
   const [election, setElection] = useState<any>([]);
   useEffect(() => {
       const handleEletion = async () => {
-          // setIsLoading(true)
+          setIsLoading(true)
           try {
               const res = await fetch(`https://foursquarevgc-election-api.onrender.com/elections`, {
                   method: 'GET',
@@ -23,7 +23,7 @@ export const ElectionResults = () => {
               console.log(error)
           }
           finally {
-              // setIsLoading(false)
+              setIsLoading(false)
           }
       }
       handleEletion();
@@ -40,7 +40,7 @@ const electionId  = election[0]?._id
 console.log(electionId)
 useEffect(() => {
   const handleEletion = async () => {
-    // setIsLoading(true);
+    setIsLoading(true);
     try {
       const res = await fetch(`https://foursquarevgc-election-api.onrender.com/election-records/results/${electionId}`,{
         method: 'GET',
@@ -55,11 +55,11 @@ useEffect(() => {
     } catch (error) {
       console.log(error);
     } finally {
-      // setIsLoading(false);
+      setIsLoading(false);
     }
   };
   handleEletion();
-}, []);
+},[]);
 
   // const electionData = {
   //   categoryOne: [
@@ -104,8 +104,20 @@ useEffect(() => {
                   key={index}
                   className="text-gray-700 hover:bg-blue-50 transition-colors"
                 >
-                  <td className="py-1 px-4 border-b text-[2.7vw] xl:text-[1vw]">{candidate.name}</td>
-                  <td className="py-1 px-4 border-b text-[3vw] xl:text-[1vw]">{candidate.votes}</td>
+                  <td className="py-1 px-4 border-b text-[2.7vw] xl:text-[1vw]">
+                    {
+                      !isloading ? (
+                        candidate.name
+                      ) : (<span>fetching result...</span>)
+                    }
+                  </td>
+                  <td className="py-1 px-4 border-b text-[3vw] xl:text-[1vw]">
+                  {
+                      !isloading ? (
+                        candidate.votes
+                      ) : (<span>fetching result...</span>)
+                    }
+                  </td>
                 </tr>
               ))}
             </tbody>
@@ -133,8 +145,20 @@ useEffect(() => {
                   key={index}
                   className="text-gray-700 hover:bg-green-50 transition-colors"
                 >
-                  <td className="py-1 px-4 xl:text-[1vw] text-[3vw] border-b">{candidate.name}</td>
-                  <td className="py-1 px-4 xl:text-[1vw] text-[3vw] border-b">{candidate.votes}</td>
+                  <td className="py-1 px-4 xl:text-[1vw] text-[3vw] border-b">
+                  {
+                      !isloading ? (
+                        candidate.name
+                      ) : (<span>fetching result..</span>)
+                    }
+                  </td>
+                  <td className="py-1 px-4 xl:text-[1vw] text-[3vw] border-b">
+                      {
+                      !isloading ? (
+                        candidate.votes
+                      ) : (<span>fetching result...</span>)
+                    }
+                  </td>
                 </tr>
               ))}
             </tbody>
@@ -162,8 +186,20 @@ useEffect(() => {
                   key={index}
                   className="text-gray-700 hover:bg-red-50 transition-colors"
                 >
-                  <td className="py-1 xl:text-[1vw] text-[3vw] px-4 border-b">{candidate.name}</td>
-                  <td className="py-1 xl:text-[1vw] text-[3vw] px-4 border-b">{candidate.votes}</td>
+                  <td className="py-1 xl:text-[1vw] text-[3vw] px-4 border-b">
+                  {
+                      !isloading ? (
+                        candidate.name
+                      ) : (<span>fetching result..</span>)
+                    }
+                  </td>
+                  <td className="py-1 xl:text-[1vw] text-[3vw] px-4 border-b">
+                  {
+                      !isloading ? (
+                        candidate.votes
+                      ) : (<span>fetching result..</span>)
+                    }
+                  </td>
                 </tr>
               ))}
             </tbody>
