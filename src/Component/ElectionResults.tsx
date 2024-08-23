@@ -27,7 +27,7 @@ export const ElectionResults = () => {
           }
       }
       handleEletion();
-  }, [1])
+  },[])
   const handleLogout = () => {
     localStorage.removeItem("username");
     localStorage.removeItem("GroupAId");
@@ -37,6 +37,7 @@ export const ElectionResults = () => {
     window.location.href = "/";
 }
 const electionId  = election[0]?._id
+console.log(electionId)
 useEffect(() => {
   const handleEletion = async () => {
     // setIsLoading(true);
@@ -81,7 +82,7 @@ useEffect(() => {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
       <div className="bg-white p-8 rounded-lg shadow-md flex flex-col mx-auto justify-center items-center h-[95%] w-[90%] xl:w-[60%] text-center">
-        <h2 className="text-2xl font-bold text-gray-800 mb-6">
+        <h2 className="xl:text-2xl text:xl font-bold text-gray-800 mb-6">
           Election Results
         </h2>
 
@@ -98,12 +99,12 @@ useEffect(() => {
               </tr>
             </thead>
             <tbody>
-              {electionData?.categoryOne?.map((candidate: any, index: any) => (
+              {electionResult[0].candidates.map((candidate: any, index: any) => (
                 <tr
                   key={index}
                   className="text-gray-700 hover:bg-blue-50 transition-colors"
                 >
-                  <td className="py-1 px-4 border-b text-[3vw] xl:text-[1vw]">{candidate.name}</td>
+                  <td className="py-1 px-4 border-b text-[2.7vw] xl:text-[1vw]">{candidate.name}</td>
                   <td className="py-1 px-4 border-b text-[3vw] xl:text-[1vw]">{candidate.votes}</td>
                 </tr>
               ))}
@@ -127,7 +128,7 @@ useEffect(() => {
               </tr>
             </thead>
             <tbody>
-              {electionData?.categoryTwo?.map((candidate: any, index: any) => (
+              {electionResult[1].candidates.map((candidate: any, index: any) => (
                 <tr
                   key={index}
                   className="text-gray-700 hover:bg-green-50 transition-colors"
@@ -156,7 +157,7 @@ useEffect(() => {
               </tr>
             </thead>
             <tbody>
-              {electionData?.categoryThree?.map((candidate:any, index:any) => (
+              {electionResult[2].candidates.map((candidate:any, index:any) => (
                 <tr
                   key={index}
                   className="text-gray-700 hover:bg-red-50 transition-colors"
