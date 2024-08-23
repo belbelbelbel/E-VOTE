@@ -125,8 +125,8 @@ export const VotersContainer = () => {
             setShowElectionHold(true);
             setShowElectionResult(false);
         } else if (now >= stopTime) {
-            setShowElectionResult(true);
-            setShowElectionHold(false);
+            setShowElectionResult(false);
+            setShowElectionHold(true);
         } else {
             setShowElectionHold(false);
             setShowElectionResult(false);

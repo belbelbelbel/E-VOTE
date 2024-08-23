@@ -7,7 +7,6 @@ export const ElectionOnHold = ({ start_time, stop_time }: iTimeProps) => {
   const { formattedDate, formattedTime } = getDateTime(start_time);
   const { formattedDate: formattedStopDate, formattedTime: formattedStopTime } =
     getDateTime(stop_time);
-  
   const handleLogout = () => {
     const keysToRemove = [
       "username",
@@ -16,12 +15,9 @@ export const ElectionOnHold = ({ start_time, stop_time }: iTimeProps) => {
       "GroupCId",
       "token",
     ];
-
     keysToRemove.forEach((key) => localStorage.removeItem(key));
-
     window.location.href = "/";
   };
-
   return (
     <div className="fixed inset-0 z-50 flex items-center  justify-center bg-black  bg-opacity-70 xl:bg-opacity-50">
       <div className="bg-white p-8 rounded-lg shadow-md relative flex-col  mx-auto justify-center items-center flex h-[40vh] w-[90%] xl:w-[60%] xl:h-[55vh] text-center">
@@ -34,14 +30,14 @@ export const ElectionOnHold = ({ start_time, stop_time }: iTimeProps) => {
             Voting Schedule:
           </div>
           <div className="xl:text-[21px] text-[3.8vw] md:text-[5vw]">
-            Date: <strong>{formattedStopDate}</strong>
+            Date: <strong>{formattedDate}</strong>
           </div>
           <div className="xl:text-[21px] text-[3.8vw] md:text-[5vw]">
             Time: <strong>{formattedTime}</strong>.
           </div>
           <div className="xl:text-[21px] text-[4vw] md:text-[5vw]">
             Closing: <strong>{formattedStopTime}</strong> on{" "}
-            <strong>{formattedDate}</strong>.
+            <strong>{formattedStopDate}</strong>.
           </div>
         </div>
         <h1 className="text-gray-700 mb-6"></h1>
