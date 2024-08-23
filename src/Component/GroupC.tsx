@@ -23,7 +23,7 @@ export const GroupC = () => {
       setIsLoading(true);
       try {
         const res = await fetch(
-          `https://foursquarevgc-election-api.onrender.com/elections`,
+          `${import.meta.env.VITE_API_ENDPOINT}/elections`,
           {
             method: "GET",
             headers: {
@@ -56,7 +56,9 @@ export const GroupC = () => {
     setIsTextLoading(true);
     try {
       const res = await fetch(
-        `https://foursquarevgc-election-api.onrender.com/election-records/vote/${electionId}`,
+        `${
+          import.meta.env.VITE_API_ENDPOINT
+        }/election-records/vote/${electionId}`,
         {
           method: "POST",
           headers: {
@@ -104,7 +106,6 @@ export const GroupC = () => {
 
           return updatedPayload;
         });
-
       }
     } catch (error) {
       error;

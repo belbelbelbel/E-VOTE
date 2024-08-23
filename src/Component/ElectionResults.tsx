@@ -9,7 +9,7 @@ export const ElectionResults = () => {
     const handleEletions = async () => {
       try {
         const res = await fetch(
-          `https://foursquarevgc-election-api.onrender.com/elections`,
+          `${import.meta.env.VITE_API_ENDPOINT}/elections`,
           {
             method: "GET",
             headers: {
@@ -48,7 +48,9 @@ export const ElectionResults = () => {
       setIsLoading(true);
       try {
         const res = await fetch(
-          `https://foursquarevgc-election-api.onrender.com/election-records/results/${electionId}`,
+          `${
+            import.meta.env.VITE_API_ENDPOINT
+          }/election-records/results/${electionId}`,
           {
             method: "GET",
             headers: {

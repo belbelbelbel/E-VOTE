@@ -8,9 +8,6 @@ import { GroupC } from './Component/GroupC'
 import { Greeting } from './Component/Greeting'
 
 function App() {
-  const token = localStorage.getItem('token')
-  console.log(token)
-
   return (
     <div>
       
