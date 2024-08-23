@@ -7,7 +7,6 @@ interface iTimeProps {
 export const ElectionOnHold = ({ start_time, stop_time }: iTimeProps) => {
   const { formattedDate, formattedTime } = getDateTime(start_time);
   const { formattedDate: formattedStopDate, formattedTime: formattedStopTime } = getDateTime(stop_time);
-  console.log('formattedTime her******', formattedTime)
   const handleLogout = () => {
     localStorage.removeItem("username");
     localStorage.removeItem("GroupAId");
@@ -23,10 +22,9 @@ export const ElectionOnHold = ({ start_time, stop_time }: iTimeProps) => {
           <h1 className="text-red-500 xl:text-[43px] text-[5.5vw] md:text-[5vw] fonts-mid tracking-[1px] xl:tracking-[2px] font-black flex gap-2"> Election Not Started Yet</h1>
           <div className="xl:text-[21px] text-[3.8vw] md:text-[5vw]">
             Scheduled to start on <strong>{formattedDate} </strong > at <strong>{formattedTime}</strong>.
-            {/* Scheduled to start on <strong>{formattedDate} </strong > at <strong>{formattedTime}</strong>. */}
 
           </div>
-          <div className="xl:text-[21px] text-[3.5vw] md:text-[5vw]">Stop at <strong>{formattedStopTime}</strong> on <strong>{formattedStopDate}</strong>.</div>
+          <div className="xl:text-[21px] text-[4vw] md:text-[5vw]">Stop at <strong>{formattedStopTime}</strong> on <strong>{formattedStopDate}</strong>.</div>
         </div>
         <h1 className="text-gray-700 mb-6"></h1>
         <button

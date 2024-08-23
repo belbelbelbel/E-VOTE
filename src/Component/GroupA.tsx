@@ -40,7 +40,7 @@ export const GroupA = () => {
             }
         }
         handleEletion();
-    }, [])
+    }, [1])
 
 
     const newArray = [];
@@ -49,8 +49,10 @@ export const GroupA = () => {
     const electionData: any = newArray[0];
     console.log(electionData?.[0]?.groups[0].candidates);
     const electionId = electionData?.[0]?._id;
+    console.log(electionId);
     const group = electionData?.[0]?.groups[0];
     const groupId = electionData?.[0]?.groups[0]?._id;
+    console.log(groupId);
 
     const candidates = group?.candidates;
     const candidateId =

@@ -39,24 +39,26 @@ export const GroupB = () => {
             }
         }
         handleEletion();
-    }, [])
+    }, [1])
 
 
     const newArray = [];
     newArray.push(election);
     console.log(newArray);
     const electionData: any = newArray[0];
-    console.log(electionData[0]?.groups[1]?.candidates);
-    const electionId = electionData?.[1]?._id;
-    const group = electionData?.[1]?.groups[0];
-    const groupId = electionData?.[1]?.groups[0]?._id;
-
-    const candidates = electionData[0]?.groups[1]?.candidates;
+    console.log(electionData[0]?.groups[1]);
+    const electionId = electionData?.[0]?._id;
+    console.log(electionId);
+    // const group = electionData?.[0]?.groups[0];
+    const groupId = electionData?.[0]?.groups[1]?._id;
+    console.log(groupId);
+    const candidates = electionData[0]?.groups[1].candidates;
     const candidateId =
-        candidates && candidates.length > 0 ? candidates[1]._id : " ";
+        candidates && candidates.length > 0 ? candidates[0]._id : " ";
     candidates?.forEach((candidate: any) => {
         console.log("Candidate:", candidate);
     });
+    console.log("candidTEID", candidateId)
 
     const callSaveVoteApi = async (updatedPayload: any) => {
         setIsTextLoading(true)

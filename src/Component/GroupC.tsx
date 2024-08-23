@@ -45,13 +45,14 @@ export const GroupC = () => {
     console.log(newArray);
     const electionData: any = newArray[0];
     console.log(electionData[0]?.groups[2]);
-    const electionId = electionData[0]?._id;
+    const electionId = electionData?.[0]?._id;
     console.log(electionId);
-    const group = electionData?.[2]?.groups[0];
-    const groupId = electionData?.[2]?.groups[0]?._id;  
-    const candidates = electionData[0]?.groups[2]?.candidates;
+    // const group = electionData?.[0]?.groups[0];
+    const groupId = electionData?.[0]?.groups[2]?._id;
+    console.log(groupId);
+    const candidates = electionData[0]?.groups[2].candidates;
     const candidateId =
-        candidates && candidates.length > 0 ? candidates[2]._id : " ";
+        candidates && candidates.length > 0 ? candidates[0]._id : " ";
     candidates?.forEach((candidate: any) => {
         console.log("Candidate:", candidate);
     });
