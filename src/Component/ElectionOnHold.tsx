@@ -34,14 +34,14 @@ export const ElectionOnHold = ({ start_time, stop_time }: iTimeProps) => {
             Voting Schedule:
           </div>
           <div className="xl:text-[21px] text-[3.8vw] md:text-[5vw]">
-            Date: <strong>{formattedDate}</strong>
+            Date: <strong>{formattedStopDate}</strong>
           </div>
           <div className="xl:text-[21px] text-[3.8vw] md:text-[5vw]">
             Time: <strong>{formattedTime}</strong>.
           </div>
           <div className="xl:text-[21px] text-[4vw] md:text-[5vw]">
             Closing: <strong>{formattedStopTime}</strong> on{" "}
-            <strong>{formattedStopDate}</strong>.
+            <strong>{formattedDate}</strong>.
           </div>
         </div>
         <h1 className="text-gray-700 mb-6"></h1>

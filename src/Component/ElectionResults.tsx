@@ -3,7 +3,7 @@ export const ElectionResults = () => {
   const [isloading, setIsLoading] = useState(false);
   const [electionResult, setElectionResult] = useState<any>([]);
   console.log(electionResult);
-  console.log(isloading);
+ 
   const token = localStorage.getItem("token");
   const [election, setElection] = useState<any>([]);
   useEffect(() => {
@@ -21,6 +21,7 @@ export const ElectionResults = () => {
         );
         const result = await res.json();
         setElection(result);
+  
       } catch (error) {
         console.log(error);
       }
@@ -48,6 +49,7 @@ export const ElectionResults = () => {
   useEffect(() => {
     const handleEletion = async () => {
       setIsLoading(true);
+      console.log(isloading);
       try {
         const res = await fetch(
           `https://foursquarevgc-election-api.onrender.com/election-records/results/${electionId}`,
@@ -62,6 +64,7 @@ export const ElectionResults = () => {
         const result = await res.json();
         setElectionResult(result);
         console.log(result);
+        
       } catch (error) {
         console.log(error);
       } finally {
