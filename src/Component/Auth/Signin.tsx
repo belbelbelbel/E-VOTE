@@ -1,10 +1,10 @@
-import "../Styles/Entire.css";
+import { useNavigate } from "react-router";
+import { ChangeEvent, useEffect, useState } from "react";
 import { IoPerson } from "react-icons/io5";
 import { FaLock } from "react-icons/fa";
 import { IoIosEye, IoIosEyeOff } from "react-icons/io";
 import { MdOutlineHowToVote } from "react-icons/md";
-import { ChangeEvent, useEffect, useState } from "react";
-import { useNavigate } from "react-router";
+import "../Styles/Entire.css";
 
 export const Signin = () => {
   const [isloading, setIsloading] = useState(false);
