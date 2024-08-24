@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { ElectionOnHold } from "./ElectionOnHold";
-import { ElectionResults } from "./ElectionResults";
+// import { ElectionOnHold } from "./ElectionOnHold";
+// import { ElectionResults } from "./ElectionResults";
 
 const useIsMobile = () => {
     const [isMobile, setIsMobile] = useState(window.innerWidth < 1280);
@@ -25,8 +25,8 @@ const useIsMobile = () => {
 export const VotersContainer = () => {
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
-  const [showElectionHold, setShowElectionHold] = useState(false);
-  const [showElectionResult, setShowElectionResult] = useState(false);
+//   const [showElectionHold, setShowElectionHold] = useState(false);
+//   const [showElectionResult, setShowElectionResult] = useState(false);
 
     const username = localStorage.getItem("username");
 
@@ -85,8 +85,8 @@ export const VotersContainer = () => {
     window.location.href = "/";
   };
 
-    const start_time = election[0]?.start_time || new Date().toISOString();
-    const stop_time = election[0]?.stop_time || new Date().toISOString();
+    // const start_time = election[0]?.start_time || new Date().toISOString();
+    // const stop_time = election[0]?.stop_time || new Date().toISOString();
 
     // useEffect(() => {
     //     const now = new Date();
@@ -117,10 +117,10 @@ export const VotersContainer = () => {
 
     return (
         <div className="w-screen h-[100dvh] relative z-40 h-[100dvh]">
-            {showElectionHold && (
+           {/*  {showElectionHold && (
                 <ElectionOnHold start_time={start_time} stop_time={stop_time} />
-            )}
-            {showElectionResult && <ElectionResults />}
+            )} */}
+            {/* {showElectionResult && <ElectionResults />} */}
             <ToastContainer />
             {/* Desktop Layout */}
             <div className="w-screen relative z-30 h-screen flex xl:flex hidden">
