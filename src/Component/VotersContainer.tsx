@@ -23,13 +23,10 @@ const useIsMobile = () => {
 };
 
 export const VotersContainer = () => {
-    const token = localStorage.getItem("token");
-    const navigate = useNavigate();
-    const [showElectionHold, setShowElectionHold] = useState(false);
-    const [showElectionResult, setShowElectionResult] = useState(false);
-    // const capitalizeFirstLetter = (string: any) => {
-    //     return string.charAt(0)?.toUpperCase() + string.slice(1);
-    // };
+  const token = localStorage.getItem("token");
+  const navigate = useNavigate();
+  const [showElectionHold, setShowElectionHold] = useState(false);
+  const [showElectionResult, setShowElectionResult] = useState(false);
 
     const username = localStorage.getItem("username");
 
@@ -45,76 +42,51 @@ export const VotersContainer = () => {
     const location = useLocation();
     const isMobile = useIsMobile();
 
-    useEffect(() => {
-        const handleEletion = async () => {
-            try {
-                const res = await fetch(
-                    `https://foursquarevgc-election-api.onrender.com/elections`,
-                    {
-                        method: "GET",
-                        headers: {
-                            "Content-Type": "application/json",
-                            authorization: `Bearer ${token}`,
-                        },
-                    }
-                );
-                const result = await res.json();
-                setElection(result);
-            } catch (error) {
-                console.log(error);
-            }
-        };
-        handleEletion();
-    }, []);
-    useEffect(() => {
-        if (!token || !username) {
-            toast.error("Your time has lapsed please login");
-            navigate("/");
-        }
-    }, [token]);
-    console.log(token);
-    console.log("outlet", <Outlet />);
-    useEffect(() => {
-        const handleEletion = async () => {
-            try {
-                const res = await fetch(
-                    `https://foursquarevgc-election-api.onrender.com/elections`,
-                    {
-                        method: "GET",
-                        headers: {
-                            "Content-Type": "application/json",
-                            authorization: `Bearer ${token}`,
-                        },
-                    }
-                );
-                const result = await res.json();
-                setElection(result);
-            } catch (error) {
-                console.log(error);
-            }
-        };
-        handleEletion();
-    }, []);
+  useEffect(() => {
+    if (!token || !username) {
+      toast.error("Your time has lapsed please login");
+      navigate("/");
+    }
+  }, [token]);
 
-    const handleLogout = () => {
-        const keysToRemove = [
-            "username",
-            "GroupAId",
-            "GroupBId",
-            "GroupCId",
-            "token",
-        ];
-
-        keysToRemove.forEach((key) => localStorage.removeItem(key));
-
-        window.location.href = "/";
+  useEffect(() => {
+    const handleEletion = async () => {
+      try {
+        const res = await fetch(
+          `${import.meta.env.VITE_API_ENDPOINT}/elections`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        const result = await res.json();
+        setElection(result);
+      } catch (error) {
+        console.log(error);
+      }
     };
+    handleEletion();
+  }, []);
+
+  const handleLogout = () => {
+    const keysToRemove = [
+      "username",
+      "GroupAId",
+      "GroupBId",
+      "GroupCId",
+      "token",
+    ];
+
+    keysToRemove.forEach((key) => localStorage.removeItem(key));
+
+    window.location.href = "/";
+  };
 
     const start_time = election[0]?.start_time || new Date().toISOString();
     const stop_time = election[0]?.stop_time || new Date().toISOString();
-    console.log(stop_time);
-    console.log(new Date(start_time));
-    console.log(new Date(stop_time));
 
     useEffect(() => {
         const now = new Date();
@@ -132,8 +104,6 @@ export const VotersContainer = () => {
             setShowElectionResult(false);
         }
     }, [start_time, stop_time]);
-
-
     useEffect(() => {
         setShowOutlet(location.pathname !== "/votes");
     }, [location]);

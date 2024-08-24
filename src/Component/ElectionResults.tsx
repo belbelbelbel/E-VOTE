@@ -2,15 +2,14 @@ import { useEffect, useState } from "react";
 export const ElectionResults = () => {
   const [isloading, setIsLoading] = useState(false);
   const [electionResult, setElectionResult] = useState<any>([]);
-  console.log(electionResult);
- 
   const token = localStorage.getItem("token");
   const [election, setElection] = useState<any>([]);
+
   useEffect(() => {
     const handleEletions = async () => {
       try {
         const res = await fetch(
-          `https://foursquarevgc-election-api.onrender.com/elections`,
+          `${import.meta.env.VITE_API_ENDPOINT}/elections`,
           {
             method: "GET",
             headers: {
@@ -27,8 +26,8 @@ export const ElectionResults = () => {
       }
     };
     handleEletions();
-  });
-  
+  }, []);
+
   const handleLogout = () => {
     const keysToRemove = [
       "username",
@@ -44,7 +43,6 @@ export const ElectionResults = () => {
   };
 
   const electionId = election[0]?._id;
-  console.log(electionId);
 
   useEffect(() => {
     const handleEletion = async () => {
@@ -52,7 +50,9 @@ export const ElectionResults = () => {
       console.log(isloading);
       try {
         const res = await fetch(
-          `https://foursquarevgc-election-api.onrender.com/election-records/results/${electionId}`,
+          `${
+            import.meta.env.VITE_API_ENDPOINT
+          }/election-records/results/${electionId}`,
           {
             method: "GET",
             headers: {
@@ -63,8 +63,6 @@ export const ElectionResults = () => {
         );
         const result = await res.json();
         setElectionResult(result);
-        console.log(result);
-        
       } catch (error) {
         console.log(error);
       } finally {
