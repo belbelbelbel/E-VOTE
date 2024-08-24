@@ -223,3 +223,15 @@ export const GroupA = () => {
     </div>
   );
 };
+
+
+
+const currency = {
+ngn: 'NGN',
+usd: 'USD',
+eur: 'EUR',
+};
+
+const keys = Object.keys(currency);
+console.log(keys);
+console.log(keys)

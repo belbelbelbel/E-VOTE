@@ -16,7 +16,12 @@ export const VotersContainer = () => {
   //   const [showElectionHold, setShowElectionHold] = useState(false);
   //   const [showElectionResult, setShowElectionResult] = useState(false);
 
-  const username = localStorage.getItem("username");
+  const capitalizeFirstLetter = (string:any) => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+};
+var name =  capitalizeFirstLetter(localStorage.getItem('username'))
+
+const username = localStorage.getItem("username");
 
   useEffect(() => {
     if (!token) {
@@ -122,7 +127,7 @@ export const VotersContainer = () => {
               </div>
               <div className="text-[#9C9C9C] xl:text-[43px] text-[5.5vw] md:text-[5vw] fonts-small font-black flex gap-2">
                 <span className="text-[#0250FC] fonts-mid">Welcome,</span>
-                <span>{username}</span>
+                <span>{name}</span>
               </div>
             </div>
             <div className="w-[85%] group_but md:w-[74%] pt-[1rem] mx-auto flex flex-col md:gap-4 gap-2">
