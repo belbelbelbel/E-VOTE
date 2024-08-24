@@ -1,23 +1,16 @@
-import { getDateTime } from "./utils/GetTimeAndDate";
+import { handleLogout } from "../utils";
+import { getDateTime } from "./shared/GetTimeAndDate";
+
 interface iTimeProps {
   start_time: any;
   stop_time: any;
 }
+
 export const ElectionOnHold = ({ start_time, stop_time }: iTimeProps) => {
   const { formattedDate, formattedTime } = getDateTime(start_time);
   const { formattedDate: formattedStopDate, formattedTime: formattedStopTime } =
     getDateTime(stop_time);
-  const handleLogout = () => {
-    const keysToRemove = [
-      "username",
-      "GroupAId",
-      "GroupBId",
-      "GroupCId",
-      "token",
-    ];
-    keysToRemove.forEach((key) => localStorage.removeItem(key));
-    window.location.href = "/";
-  };
+
   return (
     <div className="fixed inset-0 z-50 flex items-center  justify-center bg-black  bg-opacity-70 xl:bg-opacity-50">
       <div className="bg-white p-8 rounded-lg shadow-md relative flex-col  mx-auto justify-center items-center flex h-[40vh] w-[90%] xl:w-[60%] xl:h-[55vh] text-center">

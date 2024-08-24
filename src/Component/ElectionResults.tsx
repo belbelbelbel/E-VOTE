@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import { handleLogout } from "../utils";
+
 export const ElectionResults = () => {
   const [isloading, setIsLoading] = useState(false);
   const [electionResult, setElectionResult] = useState<any>([]);
@@ -20,27 +22,12 @@ export const ElectionResults = () => {
         );
         const result = await res.json();
         setElection(result);
-  
       } catch (error) {
         console.log(error);
       }
     };
     handleEletions();
   }, []);
-
-  const handleLogout = () => {
-    const keysToRemove = [
-      "username",
-      "GroupAId",
-      "GroupBId",
-      "GroupCId",
-      "token",
-    ];
-
-    keysToRemove.forEach((key) => localStorage.removeItem(key));
-
-    window.location.href = "/";
-  };
 
   const electionId = election[0]?._id;
 

@@ -1,26 +1,15 @@
-import { SideBar } from "./SideBar";
-import { Outlet, useLocation, useNavigate } from "react-router";
-import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Link } from "react-router-dom";
+import { Outlet, useLocation, useNavigate } from "react-router";
+import { SideBar } from "./SideBar";
+import { useIsMobile } from "../hooks";
+import { handleLogout } from "../utils";
+
 // import { ElectionOnHold } from "./ElectionOnHold";
 // import { ElectionResults } from "./ElectionResults";
 
-const useIsMobile = () => {
-    const [isMobile, setIsMobile] = useState(window.innerWidth < 1280);
-
-    useEffect(() => {
-        const handleResize = () => {
-            setIsMobile(window.innerWidth < 1280);
-        };
-
-        window.addEventListener("resize", handleResize);
-        return () => window.removeEventListener("resize", handleResize);
-    }, []);
-
-    return isMobile;
-};
 
 export const VotersContainer = () => {
   const token = localStorage.getItem("token");
@@ -70,20 +59,6 @@ export const VotersContainer = () => {
     };
     handleEletion();
   }, []);
-
-  const handleLogout = () => {
-    const keysToRemove = [
-      "username",
-      "GroupAId",
-      "GroupBId",
-      "GroupCId",
-      "token",
-    ];
-
-    keysToRemove.forEach((key) => localStorage.removeItem(key));
-
-    window.location.href = "/";
-  };
 
     // const start_time = election[0]?.start_time || new Date().toISOString();
     // const stop_time = election[0]?.stop_time || new Date().toISOString();

@@ -1,25 +1,12 @@
 import "../Component/Styles/Entire.css";
 import { Link, useLocation } from "react-router-dom";
+import { handleLogout } from "../utils";
 
 export const SideBar = () => {
   const { pathname } = useLocation();
 
   const isActive = (link: any) => {
     return pathname.includes(link);
-  };
-
-  const handleLogout = () => {
-    const keysToRemove = [
-      "username",
-      "GroupAId",
-      "GroupBId",
-      "GroupCId",
-      "token",
-    ];
-
-    keysToRemove.forEach((key) => localStorage.removeItem(key));
-
-    window.location.href = "/";
   };
 
   return (

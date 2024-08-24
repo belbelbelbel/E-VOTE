@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { ModalSummary } from "./ModalSummary";
 import { HiOutlineArrowLeft } from "react-icons/hi2";
 import { useNavigate } from "react-router";
-import { FeedbackError } from "./utils/FeedbackError";
+import { FeedbackError } from "./shared/FeedbackError";
 
 export const GroupA = () => {
   const token = localStorage.getItem("token");
