@@ -70,7 +70,7 @@ const username = localStorage.getItem("username");
   useEffect(() => {
     const now = new Date();
 
-    if (now < start_time) {
+    if (now > start_time) {
       setShowElectionHold(true);
       setShowElectionResult(false);
     }
