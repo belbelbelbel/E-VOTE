@@ -7,14 +7,14 @@ import { SideBar } from "./SideBar";
 import { useIsMobile } from "../hooks";
 import { handleLogout } from "../utils";
 
-// import { ElectionOnHold } from "./ElectionOnHold";
-// import { ElectionResults } from "./ElectionResults";
+import { ElectionOnHold } from "./ElectionOnHold";
+import { ElectionResults } from "./ElectionResults";
 
 export const VotersContainer = () => {
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
-  //   const [showElectionHold, setShowElectionHold] = useState(false);
-  //   const [showElectionResult, setShowElectionResult] = useState(false);
+  const [showElectionHold, setShowElectionHold] = useState(false);
+  const [showElectionResult, setShowElectionResult] = useState(false);
 
   const username = localStorage.getItem("username");
 
@@ -59,25 +59,21 @@ export const VotersContainer = () => {
     handleEletion();
   }, []);
 
-  // const start_time = election[0]?.start_time || new Date().toISOString();
-  // const stop_time = election[0]?.stop_time || new Date().toISOString();
+  const start_time = new Date(election[0]?.start_time);
+  const stop_time = new Date(election[0]?.stop_time);
 
-  // useEffect(() => {
-  //     const now = new Date();
-  //     const startTime = new Date(start_time);
-  //     const stopTime = new Date(stop_time);
+  useEffect(() => {
+    const now = new Date();
 
-  //     if (now < startTime) {
-  //         setShowElectionHold(true);
-  //         setShowElectionResult(false);
-  //     } else if (now >= stopTime) {
-  //         setShowElectionResult(false);
-  //         setShowElectionHold(true);
-  //     } else {
-  //         setShowElectionHold(false);
-  //         setShowElectionResult(false);
-  //     }
-  // }, [start_time, stop_time]);
+    if (now < start_time) {
+      setShowElectionHold(true);
+      setShowElectionResult(false);
+    }
+    if (now >= stop_time) {
+      setShowElectionResult(true);
+      setShowElectionHold(false);
+    }
+  }, [start_time, stop_time]);
 
   useEffect(() => {
     setShowOutlet(location.pathname !== "/votes");
@@ -91,10 +87,10 @@ export const VotersContainer = () => {
 
   return (
     <div className="w-screen h-[100dvh] relative z-40 h-[100dvh]">
-      {/*  {showElectionHold && (
-                <ElectionOnHold start_time={start_time} stop_time={stop_time} />
-            )} */}
-      {/* {showElectionResult && <ElectionResults />} */}
+      {showElectionHold && (
+        <ElectionOnHold start_time={start_time} stop_time={stop_time} />
+      )}
+      {showElectionResult && <ElectionResults />}
       <ToastContainer />
       {/* Desktop Layout */}
       <div className="w-screen relative z-30 h-screen flex xl:flex hidden">
