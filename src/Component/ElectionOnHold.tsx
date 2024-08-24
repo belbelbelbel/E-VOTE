@@ -1,5 +1,4 @@
-import { handleLogout } from "../utils";
-import { getDateTime } from "./shared/GetTimeAndDate";
+import { getDateTime, handleLogout } from "../utils";
 
 interface iTimeProps {
   start_time: any;
