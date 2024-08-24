@@ -1,14 +1,30 @@
-import { getDateTime, handleLogout } from "../utils";
-
+import { handleLogout } from "../utils";
 interface iTimeProps {
-  start_time: any;
-  stop_time: any;
+  start_time: string | number | Date;
+  stop_time: string | number | Date;
 }
 
 export const ElectionOnHold = ({ start_time, stop_time }: iTimeProps) => {
-  const { formattedDate, formattedTime } = getDateTime(start_time);
-  const { formattedDate: formattedStopDate, formattedTime: formattedStopTime } =
-    getDateTime(stop_time);
+
+  const start: Date = new Date(start_time);
+
+  const options: Intl.DateTimeFormatOptions = {
+    weekday: "short",
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: false,
+  };
+
+  const formattedStartDate = start.toLocaleString(undefined, options);
+  console.log(`Start Date/Time: ${formattedStartDate}`);
+
+  const stop: Date = new Date(stop_time);
+  const formattedStopDate = stop.toLocaleString(undefined, options);
+  console.log(`Stop Date/Time: ${formattedStopDate}`);
 
   return (
     <div className="fixed inset-0 z-50 flex items-center  justify-center bg-black  bg-opacity-70 xl:bg-opacity-50">
@@ -22,14 +38,11 @@ export const ElectionOnHold = ({ start_time, stop_time }: iTimeProps) => {
             Voting Schedule:
           </div>
           <div className="xl:text-[21px] text-[3.8vw] md:text-[5vw]">
-            Date: <strong>{formattedDate}</strong>
+            <strong> Start Date/Time: </strong>
+            {formattedStartDate}
           </div>
           <div className="xl:text-[21px] text-[3.8vw] md:text-[5vw]">
-            Time: <strong>{formattedTime}</strong>.
-          </div>
-          <div className="xl:text-[21px] text-[4vw] md:text-[5vw]">
-            Closing: <strong>{formattedStopTime}</strong> on{" "}
-            <strong>{formattedStopDate}</strong>.
+            <strong>Stop Date/Time:</strong> {formattedStopDate}
           </div>
         </div>
         <h1 className="text-gray-700 mb-6"></h1>
