@@ -4,7 +4,11 @@ import { IoPerson } from "react-icons/io5";
 import { FaLock } from "react-icons/fa";
 import { IoIosEye, IoIosEyeOff } from "react-icons/io";
 import { MdOutlineHowToVote } from "react-icons/md";
+// import dotenv from "dotenv";
+
 import "../Styles/Entire.css";
+
+// dotenv.config();
 
 export const Signin = () => {
   const [isloading, setIsloading] = useState(false);
