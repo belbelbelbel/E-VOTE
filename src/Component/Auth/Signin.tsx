@@ -25,19 +25,16 @@ export const Signin = () => {
     e.preventDefault();
     setIsloading(true);
     try {
-      const res = await fetch(
-        `${import.meta.env.VITE_API_ENDPOINT}/users/login`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            username: formState.username,
-            access_pin: formState.password,
-          }),
-        }
-      );
+      const res = await fetch(`${import.meta.env.APP_SECRET_KEY}/users/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username: formState.username,
+          access_pin: formState.password,
+        }),
+      });
       const result = await res.json();
       console.log(result);
       console.log(result.token);

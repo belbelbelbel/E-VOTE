@@ -41,16 +41,13 @@ export const VotersContainer = () => {
   useEffect(() => {
     const handleEletion = async () => {
       try {
-        const res = await fetch(
-          `${import.meta.env.VITE_API_ENDPOINT}/elections`,
-          {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-              authorization: `Bearer ${token}`,
-            },
-          }
-        );
+        const res = await fetch(`${import.meta.env.APP_SECRET_KEY}/elections`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            authorization: `Bearer ${token}`,
+          },
+        });
         const result = await res.json();
         setElection(result);
       } catch (error) {
