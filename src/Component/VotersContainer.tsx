@@ -88,22 +88,23 @@ export const VotersContainer = () => {
     const start_time = election[0]?.start_time || new Date().toISOString();
     const stop_time = election[0]?.stop_time || new Date().toISOString();
 
-    useEffect(() => {
-        const now = new Date();
-        const startTime = new Date(start_time);
-        const stopTime = new Date(stop_time);
+    // useEffect(() => {
+    //     const now = new Date();
+    //     const startTime = new Date(start_time);
+    //     const stopTime = new Date(stop_time);
 
-        if (now < startTime) {
-            setShowElectionHold(true);
-            setShowElectionResult(false);
-        } else if (now >= stopTime) {
-            setShowElectionResult(false);
-            setShowElectionHold(true);
-        } else {
-            setShowElectionHold(false);
-            setShowElectionResult(false);
-        }
-    }, [start_time, stop_time]);
+    //     if (now < startTime) {
+    //         setShowElectionHold(true);
+    //         setShowElectionResult(false);
+    //     } else if (now >= stopTime) {
+    //         setShowElectionResult(false);
+    //         setShowElectionHold(true);
+    //     } else {
+    //         setShowElectionHold(false);
+    //         setShowElectionResult(false);
+    //     }
+    // }, [start_time, stop_time]);
+
     useEffect(() => {
         setShowOutlet(location.pathname !== "/votes");
     }, [location]);
