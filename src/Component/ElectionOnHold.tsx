@@ -1,16 +1,10 @@
 import { handleLogout } from "../utils";
-import { format } from "date-fns";
-
 interface iTimeProps {
-  start_time: string;
-  stop_time: string;
+  start_time: string | number | Date;
+  stop_time: string | number | Date;
 }
 
 export const ElectionOnHold = ({ start_time, stop_time }: iTimeProps) => {
-  // const startDate = new Date(format(start_time, "yyyy-MM-dd HH:mm:ss"));
-  // console.log(startDate);
-  // const stopDate = new Date(format(stop_time, "yyyy-MM-dd HH:mm:ss"));
-  // console.log(stopDate);
 
   const start: Date = new Date(start_time);
 
