@@ -11,7 +11,7 @@ export const ElectionResults = () => {
     const handleEletions = async () => {
       try {
         const res = await fetch(
-          `${import.meta.env.APP_SECRET_KEY}/elections`,
+          `${import.meta.env.VITE_API_ENDPOINT}/elections`,
           {
             method: "GET",
             headers: {
@@ -38,7 +38,7 @@ export const ElectionResults = () => {
       try {
         const res = await fetch(
           `${
-            import.meta.env.APP_SECRET_KEY
+            import.meta.env.VITE_API_ENDPOINT
           }/election-records/results/${electionId}`,
           {
             method: "GET",

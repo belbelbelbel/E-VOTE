@@ -24,13 +24,16 @@ export const GroupA = () => {
     const handleEletion = async () => {
       setIsLoading(true);
       try {
-        const res = await fetch(`${import.meta.env.APP_SECRET_KEY}/elections`, {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            authorization: `Bearer ${token}`,
-          },
-        });
+        const res = await fetch(
+          `${import.meta.env.VITE_API_ENDPOINT}/elections`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              authorization: `Bearer ${token}`,
+            },
+          }
+        );
         const result = await res.json();
         setElection(result);
       } catch (error) {
@@ -57,7 +60,9 @@ export const GroupA = () => {
     setIsTextLoading(true);
     try {
       const res = await fetch(
-        `${import.meta.env.APP_SECRET_KEY}/election-records/vote/${electionId}`,
+        `${
+          import.meta.env.VITE_API_ENDPOINT
+        }/election-records/vote/${electionId}`,
         {
           method: "POST",
           headers: {
