@@ -88,21 +88,21 @@ export const ElectionResults = () => {
                 </thead>
                 <tbody>
                   {electionResult[0]?.candidates.map(
-                    (candidate: any, index: any) => (
+                    (candidates: any, index: any) => (
                       <tr
                         key={index}
                         className="text-gray-700 hover:bg-blue-50 transition-colors"
                       >
                         <td className="py-1 px-4 border-b text-[2.7vw] xl:text-[1vw]">
                           {!isloading ? (
-                            candidate.name
+                            candidates.name
                           ) : (
                             <span>fetching result...</span>
                           )}
                         </td>
                         <td className="py-1 px-4 border-b text-[3vw] xl:text-[1vw]">
                           {!isloading ? (
-                            candidate.votes
+                            candidates.votes
                           ) : (
                             <span>fetching result...</span>
                           )}
@@ -141,21 +141,21 @@ export const ElectionResults = () => {
                 </thead>
                 <tbody>
                   {electionResult[1]?.candidates.map(
-                    (candidate: any, index: any) => (
+                    (candidates: any, index: any) => (
                       <tr
                         key={index}
                         className="text-gray-700 hover:bg-green-50 transition-colors"
                       >
                         <td className="py-1 px-4 border-b text-[2.7vw] xl:text-[1vw]">
                           {!isloading ? (
-                            candidate.name
+                            candidates.name
                           ) : (
                             <span>fetching result...</span>
                           )}
                         </td>
                         <td className="py-1 px-4 border-b text-[3vw] xl:text-[1vw]">
                           {!isloading ? (
-                            candidate.votes
+                            candidates.votes
                           ) : (
                             <span>fetching result...</span>
                           )}
@@ -194,21 +194,21 @@ export const ElectionResults = () => {
                 </thead>
                 <tbody>
                   {electionResult[2]?.candidates.map(
-                    (candidate: any, index: any) => (
+                    (candidates: any, index: any) => (
                       <tr
                         key={index}
                         className="text-gray-700 hover:bg-red-50 transition-colors"
                       >
                         <td className="py-1 px-4 border-b text-[2.7vw] xl:text-[1vw]">
                           {!isloading ? (
-                            candidate.name
+                            candidates.name
                           ) : (
                             <span>fetching result...</span>
                           )}
                         </td>
                         <td className="py-1 px-4 border-b text-[3vw] xl:text-[1vw]">
                           {!isloading ? (
-                            candidate.votes
+                            candidates.votes
                           ) : (
                             <span>fetching result...</span>
                           )}
